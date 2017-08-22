@@ -1,16 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-08-20T22:54:52+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">PyData Berlin 2017</title><link href="/pydata-berlin2017/" rel="alternate" type="text/html" title="PyData Berlin 2017" /><published>2017-08-20T00:00:00+01:00</published><updated>2017-08-20T00:00:00+01:00</updated><id>/pydata-berlin2017</id><content type="html" xml:base="/pydata-berlin2017/">&lt;h6 id=&quot;pydata-berlin-2017&quot;&gt;PyData Berlin 2017&lt;/h6&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-08-22T17:24:26+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-08-21T00:00:00+01:00</published><updated>2017-08-21T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
 
 &lt;p&gt;This year I was lucky to receive a travel scholarship to attend the PyData Berlin Conference 2017. This blog post summaries the main highlights for me. I’ve provided links to code and videos wherever possible. Hopefully, this might be a useful guide for anyone who couldn’t attend and is wondering what videos to watch when they’re uploaded.&lt;/p&gt;
 
 &lt;p&gt;TL;DR version: My storified tweets.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Python comment test&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;glob&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'tutorial-corpus/*'&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;novel_paths&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;novel_paths&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
 
 &lt;h2 id=&quot;tutorials---friday&quot;&gt;Tutorials - Friday&lt;/h2&gt;
 
@@ -34,52 +26,4 @@
 
 &lt;p&gt;James essentially covered four main devices in python. Notes are not online and I’m not going to be posting code versions either.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Metaclasses: General idea is that people usually say don’t use it without understanding the features it provides.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;primary way of making sure if someone is going to use your class they follow the correct procedure to use it.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Decorators: Higher order decorators usually discussed / beginner class, never really deeper.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;convenient syntax for common patterns that repeat throughout code where function calls function etc. make function calling function etc that is used to make sure classes within classes, fun&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Generators: Generators enforce sequencing. They allow one to break up a specific computation into different parts into an enforced sequence.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;easy way to iterator over something in sequence.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Context Managers: Content managers are all about these problems: opening/closing files memory.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Do something to set up some state or context and make sure you clean up after yourself.&lt;/p&gt;
-
-&lt;h3 id=&quot;4-topic-modeling-with-gensim--friend-name&quot;&gt;4. Topic Modeling with Gensim // &lt;a href=&quot;https://twitter.com/dontusethiscode&quot;&gt;Friend Name&lt;/a&gt;&lt;/h3&gt;
-
-&lt;p&gt;20 mins to set up envirenment. Most important feature is to make sure you’re preprocessing text correctly. Highly recommended SpaCy (link to twitter or website here).&lt;/p&gt;
-
-&lt;p&gt;Takeaway message, text preprocessing very import and knowing how to clean your data set before applying a topic model and SpaCy iho is the best library for this. (this applies to word2vec too.)&lt;/p&gt;
-
-&lt;h2 id=&quot;conference---saturday-and-sunday&quot;&gt;Conference - Saturday and Sunday&lt;/h2&gt;
-
-&lt;p&gt;This tutorial was designed for absolute beginners which was great because I myself have no experience with Julia and wasn’t really sure what it was intended for.&lt;/p&gt;
-
-&lt;p&gt;Hmm… this 3D code box looks bad. Look into changing it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/config.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now repository&lt;/a&gt; on GitHub.&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A summary of the highlights for me of PyData Berlin Conference 2017.</summary></entry><entry><title type="html">19th Century Gender Word Embeddings</title><link href="/what-code/" rel="alternate" type="text/html" title="19th Century Gender Word Embeddings" /><published>2017-08-20T00:00:00+01:00</published><updated>2017-08-20T00:00:00+01:00</updated><id>/what-code</id><content type="html" xml:base="/what-code/">&lt;h6 id=&quot;gender-word-embeddings--from-19th-century-fiction&quot;&gt;Gender Word Embeddings &lt;br /&gt; from 19th Century Fiction&lt;/h6&gt;
-
-&lt;p&gt;Meow, meow, meow.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Python comment test&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;glob&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;data_dir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'tutorial-corpus/*'&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;novel_paths&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;glob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;data_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;novel_paths&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Hmm… this 3D code box looks bad. Look into changing it.&lt;/p&gt;
-
-&lt;iframe src=&quot;https://github.com/graysons/graysons.github.io/blob/master/assets/images/ldk-gender-2017.html&quot; width=&quot;100%&quot; height=&quot;500&quot; seamless=&quot;&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/config.png&quot; alt=&quot;_config.yml&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now repository&lt;/a&gt; on GitHub.&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">This post should display a **header with a solid background color**, if the theme supports it</summary></entry></feed>
+&lt;p&gt;&lt;strong&gt;Metaclasses: General idea is that people usually say don’t use it without understanding the features it provides.&lt;/strong&gt;&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A guest blog post for DatSci Awards 2017.</summary></entry></feed>
