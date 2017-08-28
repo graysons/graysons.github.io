@@ -390,33 +390,61 @@
       <section class="page__content" itemprop="text">
         <h6 id="guest-post-for-datsci-awards-2017">Guest Post for DatSci Awards 2017</h6>
 
-<p>This year I was lucky to receive a travel scholarship to attend the PyData Berlin Conference 2017. This blog post summaries the main highlights for me. I’ve provided links to code and videos wherever possible. Hopefully, this might be a useful guide for anyone who couldn’t attend and is wondering what videos to watch when they’re uploaded.</p>
+<p>The first question when writing this blog post was ‘What should I write a blog post about?’… To help answer this I decided to explore what other people had written about. Which then answered my first question. So I’m going to write a blog post about what other people have written blog posts about…</p>
 
-<p>TL;DR version: My storified tweets.</p>
+<h3 id="collect-the-data">Collect The Data</h3>
 
-<h2 id="tutorials---friday">Tutorials - Friday</h2>
+<p>First, lets collect the data. To do this, I used a python package called <a href="https://doc.scrapy.org/en/latest/intro/overview.html">Scrapy</a>:</p>
 
-<h3 id="1-julia--names-find-twitter">1. Julia // [Names] (find twitter)</h3>
+<blockquote>
+  <p>Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.</p>
+</blockquote>
 
-<figure class="half">
-    <a href="/assets/images/pydata-berlin-2017.png"><img src="/assets/images/pydata-berlin-2017.png" /></a>
-    <a href="/assets/images/ldk2017-embeddings.png"><img src="/assets/images/ldk2017-embeddings.png" /></a>
-    <figcaption>Caption describing these two images.</figcaption>
-</figure>
+<p>Scrapy has really good documentation and the code below is just an adaptation of the sample spider they walk through on their <a href="https://doc.scrapy.org/en/latest/intro/tutorial.html">tutorial page</a>.</p>
 
-<p>This tutorial was designed for absolute beginners which was great because I myself have no experience with Julia and wasn’t really sure what it was intended for.</p>
+<!-- kramdown code -->
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">scrapy</span>
 
-<h3 id="2-pandas-and-big-data--steve-simmons-find-twitter">2. Pandas and Big Data // Steve Simmons (find twitter)</h3>
+<span class="k">class</span> <span class="nc">BlogSpider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s">"blogs"</span>
+    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="c"># Link to home of all blog posts.</span>
+        <span class="s">'https://www.datsciawards.ie/news/'</span><span class="p">,</span>
+    <span class="p">]</span>
 
-<p>This tutorial was designed for absolute beginners which was great because I myself have no experience with Julia and wasn’t really sure what it was intended for.</p>
+    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="c"># Start on main blog page.</span>
+        <span class="n">all_posts</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s">"article"</span><span class="p">)</span>
+        <span class="c"># Extract links to page of posts themselves.</span>
+        <span class="k">for</span> <span class="n">href</span> <span class="ow">in</span> <span class="n">all_posts</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s">"div.fusion-post-wrapper a.fusion-read-more::attr(href)"</span><span class="p">):</span>
+            <span class="c"># Follow links to post page to extract content.</span>
+            <span class="k">yield</span> <span class="n">response</span><span class="o">.</span><span class="n">follow</span><span class="p">(</span><span class="n">href</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parse_blog</span><span class="p">)</span>
 
-<h3 id="3-advanced-metaphors-in-python-programming--james-powell">3. Advanced Metaphors in Python Programming // <a href="https://twitter.com/dontusethiscode">James Powell</a></h3>
+    <span class="k">def</span> <span class="nf">parse_blog</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">extract_with_css</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span>
 
-<p>From the start this tutorial carried an air of mystery (it helped that there was no description provided on the conference page). So naturally, I had to go and find out what it was about. James Powell definitely didn’t disappoint and</p>
+        <span class="k">yield</span> <span class="p">{</span>
+            <span class="s">'title'</span>  <span class="p">:</span> <span class="n">extract_with_css</span><span class="p">(</span><span class="s">'article h1.entry-title::text'</span><span class="p">),</span>
+            <span class="c"># Third item in list is date for all pages.</span>
+            <span class="s">'date'</span>   <span class="p">:</span> <span class="n">extract_with_css</span><span class="p">(</span><span class="s">'div.fusion-meta-info-wrapper span::text'</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="c"># * will visit all inner tags of p (&lt;span&gt;&lt;strong&gt; etc) and get text.</span>
+            <span class="s">'content'</span><span class="p">:</span> <span class="n">extract_with_css</span><span class="p">(</span><span class="s">'article p *::text'</span><span class="p">)</span>
+        <span class="p">}</span>
+</code></pre>
+</div>
 
-<p>James essentially covered four main devices in python. Notes are not online and I’m not going to be posting code versions either.</p>
+<p>Once you follow the guideline for setting up a new project and save the code above as your spider, just run:</p>
 
-<p><strong>Metaclasses: General idea is that people usually say don’t use it without understanding the features it provides.</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>scrapy crawl blogs -o blogs.json
+</code></pre>
+</div>
+
+<p>in your terminal in the directory of your spider project. This will save the title, date, and text content of each post in a json format in the file called ‘blogs.json’.</p>
+
+<h3 id="clean-the-data">Clean The Data</h3>
+
+<p>Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself.</p>
 
         
       </section>

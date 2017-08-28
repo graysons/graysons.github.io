@@ -1,29 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-08-22T17:30:03+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-08-21T00:00:00+01:00</published><updated>2017-08-21T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-08-28T23:07:35+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-08-21T00:00:00+01:00</published><updated>2017-08-21T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
 
-&lt;p&gt;This year I was lucky to receive a travel scholarship to attend the PyData Berlin Conference 2017. This blog post summaries the main highlights for me. I’ve provided links to code and videos wherever possible. Hopefully, this might be a useful guide for anyone who couldn’t attend and is wondering what videos to watch when they’re uploaded.&lt;/p&gt;
+&lt;p&gt;The first question when writing this blog post was ‘What should I write a blog post about?’… To help answer this I decided to explore what other people had written about. Which then answered my first question. So I’m going to write a blog post about what other people have written blog posts about…&lt;/p&gt;
 
-&lt;p&gt;TL;DR version: My storified tweets.&lt;/p&gt;
+&lt;h3 id=&quot;collect-the-data&quot;&gt;Collect The Data&lt;/h3&gt;
 
-&lt;h2 id=&quot;tutorials---friday&quot;&gt;Tutorials - Friday&lt;/h2&gt;
+&lt;p&gt;First, lets collect the data. To do this, I used a python package called &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/overview.html&quot;&gt;Scrapy&lt;/a&gt;:&lt;/p&gt;
 
-&lt;h3 id=&quot;1-julia--names-find-twitter&quot;&gt;1. Julia // [Names] (find twitter)&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/assets/images/pydata-berlin-2017.png&quot;&gt;&lt;img src=&quot;/assets/images/pydata-berlin-2017.png&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/assets/images/ldk2017-embeddings.png&quot;&gt;&lt;img src=&quot;/assets/images/ldk2017-embeddings.png&quot; /&gt;&lt;/a&gt;
-    &lt;figcaption&gt;Caption describing these two images.&lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;p&gt;Scrapy has really good documentation and the code below is just an adaptation of the sample spider they walk through on their &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/tutorial.html&quot;&gt;tutorial page&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;This tutorial was designed for absolute beginners which was great because I myself have no experience with Julia and wasn’t really sure what it was intended for.&lt;/p&gt;
+&lt;!-- kramdown code --&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scrapy&lt;/span&gt;
 
-&lt;h3 id=&quot;2-pandas-and-big-data--steve-simmons-find-twitter&quot;&gt;2. Pandas and Big Data // Steve Simmons (find twitter)&lt;/h3&gt;
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BlogSpider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrapy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Spider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;blogs&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# Link to home of all blog posts.&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'https://www.datsciawards.ie/news/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
 
-&lt;p&gt;This tutorial was designed for absolute beginners which was great because I myself have no experience with Julia and wasn’t really sure what it was intended for.&lt;/p&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# Start on main blog page.&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;all_posts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;article&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# Extract links to page of posts themselves.&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;href&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;all_posts&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;div.fusion-post-wrapper a.fusion-read-more::attr(href)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;# Follow links to post page to extract content.&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;follow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;href&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parse_blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;h3 id=&quot;3-advanced-metaphors-in-python-programming--james-powell&quot;&gt;3. Advanced Metaphors in Python Programming // &lt;a href=&quot;https://twitter.com/dontusethiscode&quot;&gt;James Powell&lt;/a&gt;&lt;/h3&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse_blog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;extract_with_css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 
-&lt;p&gt;From the start this tutorial carried an air of mystery (it helped that there was no description provided on the conference page). So naturally, I had to go and find out what it was about. James Powell definitely didn’t disappoint and&lt;/p&gt;
+        &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;'title'&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extract_with_css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'article h1.entry-title::text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;# Third item in list is date for all pages.&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;'date'&lt;/span&gt;   &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extract_with_css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'div.fusion-meta-info-wrapper span::text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;c&quot;&gt;# * will visit all inner tags of p (&amp;lt;span&amp;gt;&amp;lt;strong&amp;gt; etc) and get text.&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;'content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;extract_with_css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'article p *::text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
-&lt;p&gt;James essentially covered four main devices in python. Notes are not online and I’m not going to be posting code versions either.&lt;/p&gt;
+&lt;p&gt;Once you follow the guideline for setting up a new project and save the code above as your spider, just run:&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Metaclasses: General idea is that people usually say don’t use it without understanding the features it provides.&lt;/strong&gt;&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A guest blog post for DatSci Awards 2017.</summary></entry></feed>
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrapy crawl blogs -o blogs.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;in your terminal in the directory of your spider project. This will save the title, date, and text content of each post in a json format in the file called ‘blogs.json’.&lt;/p&gt;
+
+&lt;h3 id=&quot;clean-the-data&quot;&gt;Clean The Data&lt;/h3&gt;
+
+&lt;p&gt;Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself.&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A guest blog post for DatSci Awards 2017.</summary></entry></feed>
