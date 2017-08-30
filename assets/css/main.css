@@ -4123,7 +4123,7 @@ p, pre, blockquote, ul, ol, dl, figure, table, fieldset { orphans: 3; widows: 3;
 abbr[title], abbr[data-original-title] { text-decoration: none; cursor: help; border-bottom: 1px dotted #494e52; }
 
 /* blockquotes */
-blockquote { margin: 2em 0em 0.5em 0; padding-left: 1em; font-style: italic; border-left: 0.25em solid #04b4b0; }
+blockquote { margin: 0em 0em 0.5em 0; padding-left: 1em; font-style: italic; border-left: 0.25em solid #04b4b0; }
 blockquote cite { font-style: italic; }
 blockquote cite:before { content: "\2014"; padding-right: 5px; }
 
