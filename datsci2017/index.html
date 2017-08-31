@@ -390,24 +390,17 @@
       <section class="page__content" itemprop="text">
         <h6 id="guest-post-for-datsci-awards-2017">Guest Post for DatSci Awards 2017</h6>
 
-<!-- The first question when writing this blog post was 'What should I write a blog post about?'... To help answer this I decided to explore what other people had written about. Which then answered my first question. So I'm going to write a blog post about what other people have written blog posts about...
-
-Naturally, this post then turned into a mini analysis of what DatSci bloggers like to write about, and I decided to focus on  about and whether different topics .
-
-However, before any analysis can be done, I needed to collect the data first.
--->
-
-<p>So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the <a href="https://www.datsciawards.ie/">DatSci Awards</a>. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me. One way to do this would be to perform a <a href="https://en.wikipedia.org/wiki/Close_reading">close reading</a> analysis of the content by reading each post in turn. Another method is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1">distant reading</a> approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.</p>
+<p>So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the <a href="https://www.datsciawards.ie/" target="_blank">DatSci Awards</a>. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me (see <a href="https://www.datsciawards.ie/news/" target="_blank">here</a> for previous posts). One way to do this is to <a href="https://en.wikipedia.org/wiki/Close_reading" target="_blank">close read</a> each post in turn. Another way is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1" target="_blank">distant reading</a> perspective, an approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.</p>
 
 <h3 id="collect-the-data">Collect the Data</h3>
 
-<p>The first step in this approach is to collect the data for our corpus. In this case, I used a Python package called <a href="https://doc.scrapy.org/en/latest/intro/overview.html">Scrapy</a>:</p>
+<p>The first step in this approach is to collect the data for our corpus. In this case, I used a Python package called <a href="https://doc.scrapy.org/en/latest/intro/overview.html" target="_blank">Scrapy</a>:</p>
 
 <blockquote>
   <p>Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.</p>
 </blockquote>
 
-<p>Scrapy has great documentation and the code below is just an adaptation of the sample spider project they walk through on their <a href="https://doc.scrapy.org/en/latest/intro/tutorial.html">tutorial page</a>. The details that needed to be tailored specifically for the DatSci site were the <a href="https://doc.scrapy.org/en/latest/topics/selectors.html">CSS Selectors</a>. In order to know which parts of the page I wanted to collect I needed to inspect the tags used within the site’s HTML. For example, to collect the Title of each blog post I used the following CSS Selector:</p>
+<p>Scrapy has great documentation and the code below is just an adaptation of the sample spider project they walk through on their <a href="https://doc.scrapy.org/en/latest/intro/tutorial.html" target="_blank">tutorial page</a>. The details that needed to be tailored specifically for the DatSci site were the <a href="https://doc.scrapy.org/en/latest/topics/selectors.html" target="_blank">CSS Selectors</a>. In order to know which parts of the page I needed to collect, I had to inspect the tags used within the site’s HTML. For example, to collect the Title of each blog post I used the following CSS Selector:</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s">"article h1.entry-title::text"</span><span class="p">)</span>
 </code></pre>
@@ -461,7 +454,7 @@ However, before any analysis can be done, I needed to collect the data first.
 
 <!-- Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself. -->
 
-<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm">Pandas DataFrame</a> so that we can begin to analyse it. For this part, I have also uploaded a Juypter Notebook containing the code which can be found here.</p>
+<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm" target="_blank">Pandas DataFrame</a> so that we can begin to analyse it. For this part, I have also uploaded a <a href="http://jupyter.org/" target="_blank">Juypter Notebook</a> containing the code which can be found here.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
@@ -471,24 +464,24 @@ However, before any analysis can be done, I needed to collect the data first.
 </code></pre>
 </div>
 
-<p>I’m then going to import a Python package called <a href="https://textblob.readthedocs.io/en/dev/">TextBlob</a>:</p>
+<p>Next, I’m going to preprocess the textual content of each blog post using a Python package called <a href="https://textblob.readthedocs.io/en/dev/" target="_blank">TextBlob</a>:</p>
 
 <blockquote>
   <p>TextBlob is a Python (2 and 3) library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, translation, and more.</p>
 </blockquote>
 
-<p>I’ll then process the textual content of each blog post using TextBlob and store it in a new column called <code class="highlighter-rouge">blob_content</code> in our <code class="highlighter-rouge">df_blogs</code> dataframe.</p>
+<p>The TextBlob processed text is stored in new column called <code class="highlighter-rouge">blob_content</code> in our <code class="highlighter-rouge">df_blogs</code> DataFrame.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">textblob</span> <span class="kn">import</span> <span class="n">TextBlob</span>
 
-<span class="c"># Create new column in df where each row contains a concatenation of strings in blog.</span>
+<span class="c"># Create new column in df where each row contains a concatenation of string lists collected from blogs.</span>
 <span class="n">df_blogs</span><span class="p">[</span><span class="s">'text_content'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'content'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="c"># Create a column in df to store the result TextBlob processed text for each blog.</span>
+<span class="c"># Create a column in df to store the TextBlob processed text for each blog.</span>
 <span class="n">df_blogs</span><span class="p">[</span><span class="s">'blob_content'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'text_content'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">TextBlob</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<p>To get an overall sense of the blog posts submitted to the DatSci Awards I’m going to visualize the word count and sentiment score of each post sorted by date. TextBlob makes this task easy as it has inbuilt functions purposely built for these tasks.</p>
+<p>To get an overall sense of the blog posts submitted to the DatSci Awards, I will visualize the word count and sentiment score of each post sorted by date. TextBlob makes this task easy as it has inbuilt functions purposely built for these tasks.</p>
 <ul>
   <li>To get the word count of a blog I just need to apply the TextBlob function <code class="highlighter-rouge">words</code> and find the <code class="highlighter-rouge">len()</code>.</li>
   <li>To get the sentiment score for a post, I can just use the TextBlob function <code class="highlighter-rouge">sentiment.polarity</code>.</li>
@@ -503,22 +496,24 @@ However, before any analysis can be done, I needed to collect the data first.
 
 <h4 id="plot-the-results">Plot the Results</h4>
 
-<p>As I’d like to plot the results sorted by date, I need to set the index of the dataframe to the date. I’m also going to change the format of the date using <code class="highlighter-rouge">t.strftime(t.strftime('%d-%m-%Y')</code> (day-month-year) to eliminate seconds, minutes, and hours from showing in my final plots.</p>
+<p>As I’d like to plot the results sorted by date, I’ll sort <code class="highlighter-rouge">df_blogs</code> by the <code class="highlighter-rouge">date</code> column and then set it to be the index of the DataFrame. I’ll then change the format of the date using <code class="highlighter-rouge">t.strftime('%d-%m-%Y')</code> (day-month-year) to eliminate seconds, minutes, and hours from appearing in my final plots.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Set the index to equal the date.</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Sort df by date.</span>
+<span class="n">df_blogs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c"># Set the index to equal the date.</span>
 <span class="n">df_blogs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span>
 <span class="c"># Change format of date to day-month-year.</span>
 <span class="n">df_blogs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">d-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">Y'</span><span class="p">))</span>
 </code></pre>
 </div>
 
-<p>For the purposes of plotting I’ll use a Python library called <a href="https://matplotlib.org/">Matplotlib</a>:</p>
+<p>For the purposes of plotting I’ll use a Python library called <a href="https://matplotlib.org/" target="_blank">Matplotlib</a>:</p>
 
 <blockquote>
   <p>Matplotlib is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.</p>
 </blockquote>
 
-<p>I’m also going to import the library <a href="https://seaborn.pydata.org/">Seaborn</a> as this will automatically apply the default Seaborn plot style which I prefer over Matplotlib’s.</p>
+<p>I’m also going to import the library <a href="https://seaborn.pydata.org/" target="_blank">Seaborn</a> as this will automatically apply the default Seaborn plot style which I prefer to Matplotlib’s.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
@@ -526,9 +521,9 @@ However, before any analysis can be done, I needed to collect the data first.
 </code></pre>
 </div>
 
-<p>The following the function is then used to create the plots displayed in Fig. A and Fig. B below.</p>
+<p>The following function can then be used to produce the plots displayed in Fig. A and Fig. B below.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">senti_plots</span><span class="p">(</span> <span class="n">norm_range</span> <span class="p">,</span> <span class="n">filename</span> <span class="p">):</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">senti_plots</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">norm_range</span> <span class="p">,</span> <span class="n">filename</span> <span class="p">):</span>
     <span class="s">"""
     Function for plottting sentiment and word count figures.
     """</span>
@@ -542,8 +537,8 @@ However, before any analysis can be done, I needed to collect the data first.
     <span class="n">norm</span> <span class="o">=</span> <span class="n">norm_range</span>
     <span class="c"># Create scalar mappable of colour map.</span>
     <span class="n">sm</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">ScalarMappable</span><span class="p">(</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">)</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">)[</span><span class="s">'word_count'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'barh'</span><span class="p">,</span>
-                            <span class="n">color</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]),</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s">'None'</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="c"># The actual bar plotting:</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'word_count'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'barh'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sm</span><span class="p">);</span>
 
@@ -570,29 +565,29 @@ However, before any analysis can be done, I needed to collect the data first.
 </code></pre>
 </div>
 
-<p>For Fig. A I use the following parameters when calling the function:</p>
+<p>For Fig. A, I use the following parameters when calling the function:</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Normalise colour range between -1 (negative sentiment) and 1 (positive sentiment).</span>
 <span class="n">norm_A</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="c"># Define name for figure to be saved.</span>
+<span class="c"># Define name of file to save figure as.</span>
 <span class="n">pdf_name_A</span> <span class="o">=</span> <span class="s">'pos-sent-plot.pdf'</span>
 <span class="c"># Call senti_plot function.</span>
-<span class="n">senti_plots</span><span class="p">(</span> <span class="n">norm_A</span><span class="p">,</span> <span class="n">pdf_name_A</span><span class="p">)</span>
+<span class="n">senti_plots</span><span class="p">(</span> <span class="n">df_blogs</span><span class="p">,</span> <span class="n">norm_A</span><span class="p">,</span> <span class="n">pdf_name_A</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<p>For Fig. B there I modify the code to normalise the colour range between the minimum sentiment value and maximum sentiment value ([min sentiment = 0.102, max sentiment = 0.386]) recorded for our dataset.</p>
+<p>For Fig. B, I modify the code to normalise the colour range between the minimum sentiment value and maximum sentiment value ([min sentiment = 0.102, max sentiment = 0.386]) recorded for our dataset.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Color scaled between [min sentiment = 0.102, max sentiment = 0.386].</span>
 <span class="n">norm_B</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="nb">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">())</span>
-<span class="c"># Define name for figure to be saved.</span>
+<span class="c"># Define name of file to save figure as.</span>
 <span class="n">pdf_name_B</span> <span class="o">=</span> <span class="s">'norm-sent-plot.pdf'</span>
 <span class="c"># Call senti_plot function.</span>
-<span class="n">senti_plots</span><span class="p">(</span> <span class="n">norm_B</span><span class="p">,</span> <span class="n">pdf_name_B</span><span class="p">)</span>
+<span class="n">senti_plots</span><span class="p">(</span> <span class="n">df_blogs</span><span class="p">,</span> <span class="n">norm_B</span><span class="p">,</span> <span class="n">pdf_name_B</span><span class="p">)</span>
 </code></pre>
 </div>
 
-<p>From the code above we get the following figures:</p>
+<p>By executing the code above we get the following figures:</p>
 
 <figure class="half">
     <a href="/assets/images/pos-sent-plot.png"><img src="/assets/images/pos-sent-plot.png" /></a>
@@ -602,19 +597,72 @@ However, before any analysis can be done, I needed to collect the data first.
 
 <h4 id="what-do-our-results-tell-us-so-far">What do our results tell us so far?</h4>
 
-<p>What have we learnt from the blogs so far?
+<p>Fig. C and D below are produced using <code class="highlighter-rouge">df_blogs.describe()</code> and the function <code class="highlighter-rouge">month_hist(df_blogs, 'month_count.pdf')</code> to call following code:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">month_hist</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">filename</span> <span class="p">):</span>
+    <span class="s">"""
+    Function to plot the number of blog posts that occurred each month.
+    """</span>
+    <span class="c"># Initate figure and set size.</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="c"># Sort df by date.</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="c"># Group by year and then group by month. Then count the results and plot as a barchart.</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s">"date"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s">"date"</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span><span class="p">])</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">"bar"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'teal'</span><span class="p">,</span>  <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>                                                                                                                        
+    <span class="c"># Add x-axis line</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">)</span>
+
+    <span class="c"># Set the font size of x-axis and y-axis tick labels.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+
+    <span class="c"># Add x-axis and y-axis labels.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'Date'</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'Number of Blog Posts'</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+
+    <span class="c"># Change the format of how the dates display.</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span><span class="o">.</span><span class="n">get_text</span><span class="p">()[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="s">'</span><span class="si">%</span><span class="s">Y, </span><span class="si">%</span><span class="s">m'</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">b </span><span class="si">%</span><span class="s">Y'</span><span class="p">)</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">labels</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+    <span class="c"># Add 2016 and 2017 text annotation.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">'2016'</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">24</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">'2017'</span><span class="p">,</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">24</span><span class="p">)</span>
+
+    <span class="c"># Add dividing line between 2016 and 2017 posts.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'black'</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s">'--'</span><span class="p">);</span>
+
+    <span class="c"># Save figure as pdf.</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s">'tight'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<figure class="half">
+    <a href="/assets/images/describe_tbl.png"><img src="/assets/images/describe_tbl.png" /></a>
+    <a href="/assets/images/month_count_v.png"><img src="/assets/images/month_count_v.png" /></a>
+    <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+</figure>
+
+<p>Fig. A
 Sentiment is positive.
 Most people write blogs that are less than 1000 words (get percentile / average etc.)</p>
 
 <h3 id="what-are-datsci-bloggers-talking-about">What are DatSci Bloggers Talking about?</h3>
 
-<p>The final analysis I’m going to apply is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html">Topic Modelling</a>:</p>
+<figure>
+    <a href="/assets/images/norm-sent-plot-terms.png"><img src="/assets/images/norm-sent-plot-terms.png" /></a>
+    <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+</figure>
+
+<p>The final analysis I’m going to apply is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html" target="_blank">Topic Modelling</a>:</p>
 
 <blockquote>
   <p>Topic modelling can be described as a method for finding a group of words (i.e topic) from a collection of documents that best represents the information in the collection.</p>
 </blockquote>
 
-<p>Hence, it’s a great way to get an overview of what DatSci bloggers are writing about, and since there is two years of data available, we can also investigate whether these topics changed much between the years 2016 and 2017. Therefore, for this task I’m going to use a method known as <a href="https://arxiv.org/abs/1607.03055">Dynamic Topic Modeling via Non-negative Matrix Factorization</a>, an approach developed by <a href="http://www.derekgreene.com/">Dr. Derek Greene</a> from the <a href="https://www.insight-centre.org/">Insight Centre for Data Analytics</a>, who in the spirit of open science has made the <a href="https://github.com/derekgreene/dynamic-nmf">code</a> freely available online.</p>
+<p>Hence, it’s a great way to get an overview of what DatSci bloggers are writing about, and since there is two years of data available, we can also investigate whether these topics changed much between the years 2016 and 2017. Therefore, for this task I’m going to use a method known as <a href="https://arxiv.org/abs/1607.03055" target="_blank">Dynamic Topic Modeling via Non-negative Matrix Factorization</a>, an approach developed by <a href="http://www.derekgreene.com/" target="_blank">Dr. Derek Greene</a> from the <a href="https://www.insight-centre.org/" target="_blank">Insight Centre for Data Analytics</a>, who in the spirit of open science has made the <a href="https://github.com/derekgreene/dynamic-nmf" target="_blank">code</a> freely available online.</p>
 
 <p>First, I need to prepare the data so that it’s in a suitable format for the library to work. To keep things simple I’m going to break the data into two different time windows, one for each year.</p>
 
@@ -663,12 +711,22 @@ Most people write blogs that are less than 1000 words (get percentile / average 
 </div>
 
 <figure class="half">
-    <a href="/assets/images/2016_tbl_d1.png"><img src="/assets/images/2016_tbl_d1.png" /></a>
-    <a href="/assets/images/2017_tbl_d1.png"><img src="/assets/images/2017_tbl_d1.png" /></a>
+    <a href="/assets/images/2016_tbl_d2.png"><img src="/assets/images/2016_tbl_d2.png" /></a>
+    <a href="/assets/images/2017_tbl_d2.png"><img src="/assets/images/2017_tbl_d2.png" /></a>
     <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
 </figure>
 
-<p>Ok so the results don’t look great… To try and fix things I’m going to add data science, Ireland, and Irish to the stopwords list.</p>
+<p>So from the results we can see how the focus has shifted from the initial year of the DatSci Awards to the second year. There are two topics begin covered which become a little more obvious when we look at the none overlapping tokens:</p>
+
+<ul>
+  <li><em>2016 Topic 1:</em> Ireland, analytics, companies, research.</li>
+  <li><em>2016 Topic 2:</em> Awards, datsci, september, event.</li>
+</ul>
+
+<p>Both topics then shift in 2017 and become identical in their focus. From these results, we see that in 2016 as it was the first year of the DatSci Awards,
+While in 2017, as the relevance of data science has already been established, more focus can now be placed on the awards themselves and getting to be a part of the event.</p>
+
+<p>Just to drill down a little more, I’m going to compute the tf-idf for each post and visualise the results.</p>
 
         
       </section>
