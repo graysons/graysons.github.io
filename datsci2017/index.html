@@ -397,7 +397,7 @@ Naturally, this post then turned into a mini analysis of what DatSci bloggers li
 However, before any analysis can be done, I needed to collect the data first.
 -->
 
-<p>So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the <a href="https://www.datsciawards.ie/">DatSci Awards</a>. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me. One way to do this would be to perform a <a href="https://en.wikipedia.org/wiki/Close_reading">close reading</a> analysis of the content by reading each post in turn. Another method is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1">distant reading</a> approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights from textual content.</p>
+<p>So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the <a href="https://www.datsciawards.ie/">DatSci Awards</a>. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me. One way to do this would be to perform a <a href="https://en.wikipedia.org/wiki/Close_reading">close reading</a> analysis of the content by reading each post in turn. Another method is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1">distant reading</a> approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.</p>
 
 <h3 id="collect-the-data">Collect the Data</h3>
 
@@ -461,7 +461,7 @@ However, before any analysis can be done, I needed to collect the data first.
 
 <!-- Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself. -->
 
-<p>Now that we have our data, lets import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm">Pandas DataFrame</a> so that we can begin to analyse it. For this part, I have also uploaded a Juypter Notebook containing the code which can be found here.</p>
+<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm">Pandas DataFrame</a> so that we can begin to analyse it. For this part, I have also uploaded a Juypter Notebook containing the code which can be found here.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
@@ -512,7 +512,7 @@ However, before any analysis can be done, I needed to collect the data first.
 </code></pre>
 </div>
 
-<p>For the purposes of plotting I’ll use a Python library called <a href="https://matplotlib.org/">matplotlib</a>:</p>
+<p>For the purposes of plotting I’ll use a Python library called <a href="https://matplotlib.org/">Matplotlib</a>:</p>
 
 <blockquote>
   <p>Matplotlib is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.</p>
@@ -526,7 +526,7 @@ However, before any analysis can be done, I needed to collect the data first.
 </code></pre>
 </div>
 
-<p>I then use the following the function to create the plots displayed in Fig. A and Fig. B below.</p>
+<p>The following the function is then used to create the plots displayed in Fig. A and Fig. B below.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">senti_plots</span><span class="p">(</span> <span class="n">norm_range</span> <span class="p">,</span> <span class="n">filename</span> <span class="p">):</span>
     <span class="s">"""
@@ -581,7 +581,7 @@ However, before any analysis can be done, I needed to collect the data first.
 </code></pre>
 </div>
 
-<p>For Fig. B there is one modification to the code above to normalise the colour range between the minimum sentiment value and maximum sentiment value ([min sentiment = 0.102, max sentiment = 0.386]) actually recorded for our dataset.</p>
+<p>For Fig. B there I modify the code to normalise the colour range between the minimum sentiment value and maximum sentiment value ([min sentiment = 0.102, max sentiment = 0.386]) recorded for our dataset.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Color scaled between [min sentiment = 0.102, max sentiment = 0.386].</span>
 <span class="n">norm_B</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="nb">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">())</span>
@@ -595,8 +595,8 @@ However, before any analysis can be done, I needed to collect the data first.
 <p>From the code above we get the following figures:</p>
 
 <figure class="half">
-    <a href="/assets/images/pos-sent-plot.pdf"><img src="/assets/images/pos-sent-plot.png" /></a>
-    <a href="/assets/images/norm-sent-plot.pdf"><img src="/assets/images/norm-sent-plot.png" /></a>
+    <a href="/assets/images/pos-sent-plot.png"><img src="/assets/images/pos-sent-plot.png" /></a>
+    <a href="/assets/images/norm-sent-plot.png"><img src="/assets/images/norm-sent-plot.png" /></a>
     <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
 </figure>
 
@@ -608,7 +608,67 @@ Most people write blogs that are less than 1000 words (get percentile / average 
 
 <h3 id="what-are-datsci-bloggers-talking-about">What are DatSci Bloggers Talking about?</h3>
 
-<p>One final analysis I’m going to apply is known as Topic Modelling.</p>
+<p>The final analysis I’m going to apply is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html">Topic Modelling</a>:</p>
+
+<blockquote>
+  <p>Topic modelling can be described as a method for finding a group of words (i.e topic) from a collection of documents that best represents the information in the collection.</p>
+</blockquote>
+
+<p>Hence, it’s a great way to get an overview of what DatSci bloggers are writing about, and since there is two years of data available, we can also investigate whether these topics changed much between the years 2016 and 2017. Therefore, for this task I’m going to use a method known as <a href="https://arxiv.org/abs/1607.03055">Dynamic Topic Modeling via Non-negative Matrix Factorization</a>, an approach developed by <a href="http://www.derekgreene.com/">Dr. Derek Greene</a> from the <a href="https://www.insight-centre.org/">Insight Centre for Data Analytics</a>, who in the spirit of open science has made the <a href="https://github.com/derekgreene/dynamic-nmf">code</a> freely available online.</p>
+
+<p>First, I need to prepare the data so that it’s in a suitable format for the library to work. To keep things simple I’m going to break the data into two different time windows, one for each year.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Directory names</span>
+<span class="n">dir_16</span> <span class="o">=</span> <span class="s">'data/blogs/year2016/'</span>
+<span class="n">dir_17</span> <span class="o">=</span> <span class="s">'data/blogs/year2017/'</span>
+
+<span class="c"># Check if directories exist, if not, create.</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_16</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dir_17</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c"># Label files with uniques id numbers.</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 2016</span>
+<span class="n">j</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># 2017</span>
+
+<span class="c"># Iterate over each row in dataframe and store each blog's content in it's own file.</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_blogs</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="s">'2016'</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">'date'</span><span class="p">]):</span>
+        <span class="n">blog_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dir_16</span><span class="o">+</span><span class="s">'2016_document_'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s">'.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">blog_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">dir_17</span><span class="o">+</span><span class="s">'2017_document_'</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">+</span><span class="s">'.txt'</span><span class="p">,</span> <span class="s">'w'</span><span class="p">)</span>
+        <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">blog_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">'text_content'</span><span class="p">])</span>
+    <span class="n">blog_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p>Now I can start to follow the steps outlined in the <a href="(https://github.com/derekgreene/dynamic-nmf)">ReadMe</a> of the Github page. For <em>Step 1</em>, I need to navigate to the directory <code class="highlighter-rouge">dynamic-nmf-master</code> and run the following in my terminal:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">prep</span><span class="o">-</span><span class="n">text</span><span class="o">.</span><span class="n">py</span> <span class="n">data</span><span class="o">/</span><span class="n">blogs</span><span class="o">/</span><span class="n">year2016</span> <span class="n">data</span><span class="o">/</span><span class="n">blogs</span><span class="o">/</span><span class="n">year2017</span> <span class="o">-</span><span class="n">o</span> <span class="n">data</span> <span class="o">--</span><span class="n">tfidf</span> <span class="o">--</span><span class="n">norm</span>
+</code></pre>
+</div>
+
+<p>I now have two pkl files in the data directory. <em>Step 2</em></p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">find</span><span class="o">-</span><span class="n">window</span><span class="o">-</span><span class="n">topics</span><span class="o">.</span><span class="n">py</span> <span class="n">data</span><span class="o">/*.</span><span class="n">pkl</span> <span class="o">-</span><span class="n">k</span> <span class="mi">5</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span>
+</code></pre>
+</div>
+
+<p>I now have an out file in my directory which contains two pkl files called:</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">display</span><span class="o">-</span><span class="n">topics</span><span class="o">.</span><span class="n">py</span> <span class="n">out</span><span class="o">/</span><span class="n">year2016_windowtopics_k05</span><span class="o">.</span><span class="n">pkl</span> <span class="n">out</span><span class="o">/</span><span class="n">year2017_windowtopics_k05</span><span class="o">.</span><span class="n">pkl</span>
+</code></pre>
+</div>
+
+<figure class="half">
+    <a href="/assets/images/2016_tbl_d1.png"><img src="/assets/images/2016_tbl_d1.png" /></a>
+    <a href="/assets/images/2017_tbl_d1.png"><img src="/assets/images/2017_tbl_d1.png" /></a>
+    <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+</figure>
+
+<p>Ok so the results don’t look great… To try and fix things I’m going to add data science, Ireland, and Irish to the stopwords list.</p>
 
         
       </section>
