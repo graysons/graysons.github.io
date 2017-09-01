@@ -24,7 +24,7 @@
 
 
 
-<meta name="description" content="A guest blog post for DatSci Awards 2017.">
+<meta name="description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
 
 
 
@@ -41,13 +41,13 @@
 
 
 
-  <meta property="og:description" content="A guest blog post for DatSci Awards 2017.">
+  <meta property="og:description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
 
 
 
   <meta name="twitter:site" content="@siobhan_grayson">
   <meta name="twitter:title" content="DatSci Awards 2017">
-  <meta name="twitter:description" content="A guest blog post for DatSci Awards 2017.">
+  <meta name="twitter:description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
   <meta name="twitter:url" content="">
 
   
@@ -74,7 +74,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2017-08-21T00:00:00+01:00">
+  <meta property="article:published_time" content="2017-09-01T00:00:00+01:00">
 
 
 
@@ -220,7 +220,7 @@
       
 
       
-        <p class="post__lead">A guest blog post for DatSci Awards 2017.
+        <p class="post__lead">A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.
 </p>
       
       
@@ -380,8 +380,8 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="DatSci Awards 2017">
-    <meta itemprop="description" content="A guest blog post for DatSci Awards 2017.">
-    <meta itemprop="datePublished" content="August 21, 2017">
+    <meta itemprop="description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+    <meta itemprop="datePublished" content="September 01, 2017">
     
 
     <div class="page__inner-wrap">
@@ -400,7 +400,7 @@
   <p>Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.</p>
 </blockquote>
 
-<p>Scrapy has great documentation and the code below is just an adaptation of the sample spider project they walk through on their <a href="https://doc.scrapy.org/en/latest/intro/tutorial.html" target="_blank">tutorial page</a>. The details that needed to be tailored specifically for the DatSci site were the <a href="https://doc.scrapy.org/en/latest/topics/selectors.html" target="_blank">CSS Selectors</a>. In order to know which parts of the page I needed to collect, I had to inspect the tags used within the site’s HTML. For example, to collect the Title of each blog post I used the following CSS Selector:</p>
+<p>Scrapy has great documentation and the code below is just an adaptation of the sample spider project they walk through on their <a href="https://doc.scrapy.org/en/latest/intro/tutorial.html" target="_blank">tutorial page</a>. The details that needed to be tailored specifically for the DatSci Awards site were the <a href="https://doc.scrapy.org/en/latest/topics/selectors.html" target="_blank">CSS Selectors</a>. In order to know which parts of the page I needed to collect, I had to inspect the tags used within the site’s HTML. For example, to collect the Title of each blog post I used the following CSS Selector:</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">response</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s">"article h1.entry-title::text"</span><span class="p">)</span>
 </code></pre>
@@ -454,7 +454,7 @@
 
 <!-- Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself. -->
 
-<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm" target="_blank">Pandas DataFrame</a> so that we can begin to analyse it. For this part, I have also uploaded a <a href="http://jupyter.org/" target="_blank">Juypter Notebook</a> containing the code which can be found here.</p>
+<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm" target="_blank">Pandas DataFrame</a> and begin to analyse it. For this part, I have also uploaded a <a href="http://jupyter.org/" target="_blank">Juypter Notebook</a> containing the code which can be found here.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
@@ -464,7 +464,7 @@
 </code></pre>
 </div>
 
-<p>Next, I’m going to preprocess the textual content of each blog post using a Python package called <a href="https://textblob.readthedocs.io/en/dev/" target="_blank">TextBlob</a>:</p>
+<p>To start, I’m going to preprocess the textual content of each blog post using a Python package called <a href="https://textblob.readthedocs.io/en/dev/" target="_blank">TextBlob</a>:</p>
 
 <blockquote>
   <p>TextBlob is a Python (2 and 3) library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, translation, and more.</p>
@@ -481,7 +481,7 @@
 </code></pre>
 </div>
 
-<p>To get an overall sense of the blog posts submitted to the DatSci Awards, I will visualize the word count and sentiment score of each post sorted by date. TextBlob makes this task easy as it has inbuilt functions purposely built for these tasks.</p>
+<p>To get an overall sense of the blog posts submitted to the DatSci Awards, I will visualize the word count and sentiment score of each post sorted by date. TextBlob makes this easy as it has inbuilt functions purposely built for these tasks.</p>
 <ul>
   <li>To get the word count of a blog I just need to apply the TextBlob function <code class="highlighter-rouge">words</code> and find the <code class="highlighter-rouge">len()</code>.</li>
   <li>To get the sentiment score for a post, I can just use the TextBlob function <code class="highlighter-rouge">sentiment.polarity</code>.</li>
@@ -494,9 +494,9 @@
 </code></pre>
 </div>
 
-<h4 id="plot-the-results">Plot the Results</h4>
+<p><strong>Plot the Results</strong></p>
 
-<p>As I’d like to plot the results sorted by date, I’ll sort <code class="highlighter-rouge">df_blogs</code> by the <code class="highlighter-rouge">date</code> column and then set it to be the index of the DataFrame. I’ll then change the format of the date using <code class="highlighter-rouge">t.strftime('%d-%m-%Y')</code> (day-month-year) to eliminate seconds, minutes, and hours from appearing in my final plots.</p>
+<p>To plot the results sorted by date, I’ll sort <code class="highlighter-rouge">df_blogs</code> by the <code class="highlighter-rouge">date</code> column and then set it to be the index of the DataFrame. I’ll then change the format of the date using <code class="highlighter-rouge">t.strftime('%d-%m-%Y')</code> (day-month-year) to eliminate seconds, minutes, and hours from appearing in the final plots.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Sort df by date.</span>
 <span class="n">df_blogs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -507,7 +507,7 @@
 </code></pre>
 </div>
 
-<p>For the purposes of plotting I’ll use a Python library called <a href="https://matplotlib.org/" target="_blank">Matplotlib</a>:</p>
+<p>For the purposes of plotting, I’ll use a Python library called <a href="https://matplotlib.org/" target="_blank">Matplotlib</a>:</p>
 
 <blockquote>
   <p>Matplotlib is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.</p>
@@ -595,9 +595,42 @@
     <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
 </figure>
 
-<h4 id="what-do-our-results-tell-us-so-far">What do our results tell us so far?</h4>
+<p>Fig. A provides a means of comparing the sentiment of the posts against the entire range of values that are possible. In the case of TextBlob:</p>
+<ul>
+  <li>A value of 0 indicates a post is neutral in sentiment.</li>
+  <li>Values that extend from 0 to -1 represent increasingly negative degrees of sentiment.</li>
+  <li>While values that extend from 0 to +1 representing increasingly positive degrees of sentiment.</li>
+</ul>
 
-<p>Fig. C and D below are produced using <code class="highlighter-rouge">df_blogs.describe()</code> and the function <code class="highlighter-rouge">month_hist(df_blogs, 'month_count.pdf')</code> to call following code:</p>
+<p>In Fig. A, all blogs appear green to light green in colour, reflecting that all posts are positive in sentiment and that this positivity has carried through from 2016 into 2017. In other words, it’s a nice visual representation of the enthusiasm shared by bloggers for Data Science and the DatSci Awards.</p>
+
+<p>To get a better idea of how sentiment varies just within the corpus itself, I then replotted the same figure but with colour values normalised between the minimum sentiment (0.102) and maximum sentiment (0.386) recorded for our dataset. In this case, two posts stand out, both appearing bright yellow in colour. We’ll come back to these later to find out what the authors were talking about.</p>
+
+<p>Another result that stands out from the figures is that there is one post appears to be 4 times larger than the rest. To find the average word count of each post and other summary statistics, I used  <code class="highlighter-rouge">pandas.DataFrame.describe</code>:</p>
+
+<blockquote>
+  <p>Generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values.</p>
+</blockquote>
+
+<p>by executing <code class="highlighter-rouge">df_blogs.describe()</code> to produce the table in Fig. C.</p>
+
+<figure class="half">
+    <a href="/assets/images/describe_tbl.png"><img src="/assets/images/describe_tbl.png" /></a>
+    <a href="/assets/images/month_count_v.png"><img src="/assets/images/month_count_v.png" /></a>
+    <figcaption>Fig. C:  Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+</figure>
+
+<ul>
+  <li><strong>Count</strong> gives the number of blog posts that are currently available on the DatSci Awards website. Hence, it is the same, 29, for both the <code class="highlighter-rouge">word_count</code> and <code class="highlighter-rouge">sentiment</code> columns.</li>
+  <li>The <strong>mean</strong> <code class="highlighter-rouge">word_count</code> is 838 words, while the <strong>max</strong> is 4304, which is in fact not 4, but over 5 times larger than the average post.</li>
+  <li>While the <strong>min</strong> <code class="highlighter-rouge">sentiment</code> of 0.102 is indeed within the positive range of values.</li>
+</ul>
+
+<p>Fig. D depicts the number of blog posts that are published per month. We can see that the DatSci Blog was active between the months of May and September last year. This coincides with the DatSci Awards season, from the announcement of submission deadlines, right up until the awards ceremony itself held in September. In fact, the last two blog posts of 2016 occur the day after the awards ceremony held on the 22nd September 2016.</p>
+
+<p>The next post appears at the start of May 2017, denoting the start of the new DatSci Awards season. So, even if you have no idea what the data is representing, we can see that whatever it is is seasonal. So far, 2017 has had 13 blog submissions, 7 more than for the same time period last year. Given the trend, I think it’s likely that 2017 will have a higher number of posts than 2016, but will it also beat the highest number of submissions in a month currently held by September 2016 with 10 posts? I guess we’ll have to check back in 30 days time to find out.</p>
+
+<p>For completeness, I have included the code for producing Fig. D below. Note that <code class="highlighter-rouge">from datetime import datetime</code> is required, while the function itself is called by <code class="highlighter-rouge">month_hist(df_blogs, 'month_count.pdf')</code>.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">month_hist</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">filename</span> <span class="p">):</span>
     <span class="s">"""
@@ -639,24 +672,162 @@
 </code></pre>
 </div>
 
-<figure class="half">
-    <a href="/assets/images/describe_tbl.png"><img src="/assets/images/describe_tbl.png" /></a>
-    <a href="/assets/images/month_count_v.png"><img src="/assets/images/month_count_v.png" /></a>
-    <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
-</figure>
+<h3 id="what-are-datsci-bloggers-writing-about">What are DatSci Bloggers Writing about?</h3>
 
-<p>Fig. A
-Sentiment is positive.
-Most people write blogs that are less than 1000 words (get percentile / average etc.)</p>
+<p>So far, we know:</p>
 
-<h3 id="what-are-datsci-bloggers-talking-about">What are DatSci Bloggers Talking about?</h3>
+<ul>
+  <li>When DatSci bloggers like to post,</li>
+  <li>How long their posts tend to be, and</li>
+  <li>We even know the sentiment of their posts.</li>
+</ul>
+
+<p>But we still have no idea as to what they’re actually writing about. As of right now, if you didn’t know the source of the data, it could be anything from summer travel diaries to movie reviews (where all the movies so far have been good). Or even if you do know the source, posts could still be potentially irrelevant to the DatSci Awards themselves. To address this, I’m going to apply a method known as <a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf" target="_blank">Term Frequency-Inverse Document Frequency</a> or TF-IDF for short:</p>
+
+<blockquote>
+  <p>A numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus.</p>
+</blockquote>
+
+<p>This will allow us to examine what words are most important for individual blog posts in comparison to the overall corpus, and hence, will give a sense of the different topics DatSci bloggers like to cover.</p>
+
+<p><strong>Note:</strong> A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob to, and who has written an informative blog post on the topic which can be found <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">here</a>. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.</p>
+
+<p>Before applying TF-IDF I’m going to further preprocessor the corpus by removing common words such as <em>the</em>, <em>and</em>, <em>I</em>, <em>my</em>, <em>is</em> etc. These words are known as <a href="https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html" target="_blank">Stop Words</a> and are usually removed as they generally are irrelevant for searching purposes and provide little value when attempting to classify the content of a document. To do this, I will use the Python library <a href="http://www.nltk.org/" target="_blank">Natural Language Toolkit</a> (NLTK) stopword list.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+
+<span class="c"># Use English stop words from NLTK</span>
+<span class="n">stopwords</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s">'english'</span><span class="p">)</span>
+<span class="c"># Convert text content into tokens (each word is a seperate item in a list.)</span>
+<span class="n">df_blogs</span><span class="p">[</span><span class="s">'text_content'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'text_content'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'[^</span><span class="err">\</span><span class="s">w</span><span class="err">\</span><span class="s">s]'</span><span class="p">,</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="c"># Remove stop words from content and store in a new column: nsw_content. (no-stop-words_content)</span>
+<span class="n">df_blogs</span><span class="p">[</span><span class="s">'nsw_content'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'text_content'</span><span class="p">]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">])</span>
+<span class="c"># Convert stop word free text content into a TextBlob oject ready for TF-IDF</span>
+<span class="n">df_blogs</span><span class="p">[</span><span class="s">'blob_nsw_content'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'nsw_content'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">' '</span><span class="p">)</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="n">TextBlob</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>The following functions taken from Steven Loria’s <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">blog post</a> will be used to compute the TF-IDF for each document.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">def</span> <span class="nf">tf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">blob</span><span class="p">):</span>
+    <span class="s">"""
+    Computes "term frequency" which is the number of times a word
+    appears in a document blob, normalized by dividing by the
+    total number of words in blob.
+    """</span>
+    <span class="k">return</span> <span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">n_containing</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">):</span>
+    <span class="s">"""
+    Returns the number of documents containing "word".
+    """</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">bloblist</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">idf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">):</span>
+    <span class="s">"""
+    Computes "inverse document frequency" which measures how
+    common a word is among all documents in the corpus (bloblist).
+    """</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bloblist</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">n_containing</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">)))</span>
+
+<span class="k">def</span> <span class="nf">tfidf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">blob</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">):</span>
+    <span class="s">"""
+    Computes the TF-IDF score. It is simply the product of tf and idf.
+    """</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">blob</span><span class="p">)</span> <span class="o">*</span> <span class="n">idf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>The next code sample demonstrates how I apply the above functions to the corpus and store the top 3 most important terms in a dictionary where the keys of the dictionary are the blog titles.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tfidf_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c"># Iterate over each blog post.</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_blogs</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c"># Compute TF-IDF scores for all words within each blog post.</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="p">{</span><span class="n">word</span><span class="p">:</span> <span class="n">tfidf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s">'blob_nsw_content'</span><span class="p">],</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'blob_nsw_content'</span><span class="p">])</span>
+              <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s">'blob_nsw_content'</span><span class="p">]</span><span class="o">.</span><span class="n">words</span><span class="p">}</span>
+    <span class="c"># Sort the terms so that more important terms are at the start.</span>
+    <span class="n">sorted_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># Save the top 3 terms for each blog as dictionary value where key is the title of the blog they are from.</span>
+    <span class="n">tfidf_dict</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">[:</span><span class="mi">3</span><span class="p">]]</span>
+</code></pre>
+</div>
+
+<p>The TF-IDF dictionary is then converted into a DataFrame and merged, using the <em>title</em> column, to the original DataFrame.</p>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Concatenate sentence lists within blog titles.</span>
+<span class="n">df_blogs</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="c"># Store tf-idf dictionary created in the previous step into it's own Pandas DataFrame.</span>
+<span class="n">df_tfidf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">tfidf_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">'title'</span><span class="p">,</span> <span class="s">'tfidf_words'</span><span class="p">])</span>
+<span class="c"># Merge using title column the TF-IDF DataFrame with the original to create a new DataFrame.</span>
+<span class="n">df_mblogs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_blogs</span><span class="p">,</span> <span class="n">df_tfidf</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">"title"</span><span class="p">)</span>
+<span class="c"># Call the time sort function defined earlier.</span>
+<span class="n">df_time_sort</span><span class="p">(</span><span class="n">df_mblogs</span><span class="p">,</span> <span class="s">'date'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>Finally, I adapted the previous sentiment plotting function such that the top three most important words for each post would appear over their respective bar in the sentiment chart. In particular,</p>
+
+<ul>
+  <li>I added <code class="highlighter-rouge">alpha = 0.6</code> so that colours would be lighter,</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># The actual bar plotting:</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'word_count'</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s">'barh'</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">sm</span><span class="o">.</span><span class="n">to_rgba</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>An annotation for loop for adding TF-IDF terms to each post,</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Annotate tfidf terms onto each post.</span>
+    <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)):</span>
+        <span class="n">val_anno</span> <span class="o">=</span> <span class="n">val</span> <span class="o">-</span> <span class="mf">0.15</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">((</span><span class="s">' | '</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'tfidf_words'</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val</span><span class="p">]),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">val_anno</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">val_anno</span><span class="p">),</span>
+                    <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="s">'bold'</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>I changed Seaborn’s style to remove the grey grid background so that text is more legible, and</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Change Seaborn style to a white background so that text is more legible.</span>
+    <span class="n">sb</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s">"whitegrid"</span><span class="p">,</span> <span class="p">{</span><span class="s">'axes.grid'</span> <span class="p">:</span> <span class="bp">False</span><span class="p">})</span>
+    <span class="c"># Remove grey spline edges that occur as a result of changing seaborn style.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_frame_on</span><span class="p">(</span><span class="bp">False</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Then called the adapted sentiment term function as follows:</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Define name of file to save figure as.</span>
+<span class="n">pdf_name_C</span> <span class="o">=</span> <span class="s">'norm-sent-plot-terms.pdf'</span>
+<span class="c"># Call senti_plot_terms function.</span>
+<span class="n">senti_plot_terms</span><span class="p">(</span> <span class="n">df_mblogs</span><span class="p">,</span> <span class="n">norm_B</span><span class="p">,</span> <span class="n">pdf_name_C</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>The resulting plot is displayed in Fig. E below.</p>
 
 <figure>
     <a href="/assets/images/norm-sent-plot-terms.png"><img src="/assets/images/norm-sent-plot-terms.png" /></a>
     <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
 </figure>
 
-<p>The final analysis I’m going to apply is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html" target="_blank">Topic Modelling</a>:</p>
+<p><strong>Topic Modelling</strong></p>
+
+<p>The final analysis I’m going to conduct is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html" target="_blank">Topic Modelling</a>:</p>
 
 <blockquote>
   <p>Topic modelling can be described as a method for finding a group of words (i.e topic) from a collection of documents that best represents the information in the collection.</p>
@@ -757,7 +928,7 @@ While in 2017, as the relevance of data science has already been established, mo
 
 
         
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-08-21T00:00:00+01:00">August 21, 2017</time></p>
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-09-01T00:00:00+01:00">September 01, 2017</time></p>
         
       </footer>
 

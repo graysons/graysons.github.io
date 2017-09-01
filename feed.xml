@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-08-31T23:29:31+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-08-21T00:00:00+01:00</published><updated>2017-08-21T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-09-01T23:01:34+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-09-01T00:00:00+01:00</published><updated>2017-09-01T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
 
 &lt;p&gt;So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the &lt;a href=&quot;https://www.datsciawards.ie/&quot; target=&quot;_blank&quot;&gt;DatSci Awards&lt;/a&gt;. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me (see &lt;a href=&quot;https://www.datsciawards.ie/news/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; for previous posts). One way to do this is to &lt;a href=&quot;https://en.wikipedia.org/wiki/Close_reading&quot; target=&quot;_blank&quot;&gt;close read&lt;/a&gt; each post in turn. Another way is to take a &lt;a href=&quot;http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1&quot; target=&quot;_blank&quot;&gt;distant reading&lt;/a&gt; perspective, an approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.&lt;/p&gt;
 
@@ -10,7 +10,7 @@
   &lt;p&gt;Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Scrapy has great documentation and the code below is just an adaptation of the sample spider project they walk through on their &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/tutorial.html&quot; target=&quot;_blank&quot;&gt;tutorial page&lt;/a&gt;. The details that needed to be tailored specifically for the DatSci site were the &lt;a href=&quot;https://doc.scrapy.org/en/latest/topics/selectors.html&quot; target=&quot;_blank&quot;&gt;CSS Selectors&lt;/a&gt;. In order to know which parts of the page I needed to collect, I had to inspect the tags used within the site’s HTML. For example, to collect the Title of each blog post I used the following CSS Selector:&lt;/p&gt;
+&lt;p&gt;Scrapy has great documentation and the code below is just an adaptation of the sample spider project they walk through on their &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/tutorial.html&quot; target=&quot;_blank&quot;&gt;tutorial page&lt;/a&gt;. The details that needed to be tailored specifically for the DatSci Awards site were the &lt;a href=&quot;https://doc.scrapy.org/en/latest/topics/selectors.html&quot; target=&quot;_blank&quot;&gt;CSS Selectors&lt;/a&gt;. In order to know which parts of the page I needed to collect, I had to inspect the tags used within the site’s HTML. For example, to collect the Title of each blog post I used the following CSS Selector:&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;article h1.entry-title::text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -64,7 +64,7 @@
 
 &lt;!-- Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself. --&gt;
 
-&lt;p&gt;Now that we have our data, let’s import it into a &lt;a href=&quot;https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm&quot; target=&quot;_blank&quot;&gt;Pandas DataFrame&lt;/a&gt; so that we can begin to analyse it. For this part, I have also uploaded a &lt;a href=&quot;http://jupyter.org/&quot; target=&quot;_blank&quot;&gt;Juypter Notebook&lt;/a&gt; containing the code which can be found here.&lt;/p&gt;
+&lt;p&gt;Now that we have our data, let’s import it into a &lt;a href=&quot;https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm&quot; target=&quot;_blank&quot;&gt;Pandas DataFrame&lt;/a&gt; and begin to analyse it. For this part, I have also uploaded a &lt;a href=&quot;http://jupyter.org/&quot; target=&quot;_blank&quot;&gt;Juypter Notebook&lt;/a&gt; containing the code which can be found here.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pd&lt;/span&gt;
 
@@ -74,7 +74,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Next, I’m going to preprocess the textual content of each blog post using a Python package called &lt;a href=&quot;https://textblob.readthedocs.io/en/dev/&quot; target=&quot;_blank&quot;&gt;TextBlob&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;To start, I’m going to preprocess the textual content of each blog post using a Python package called &lt;a href=&quot;https://textblob.readthedocs.io/en/dev/&quot; target=&quot;_blank&quot;&gt;TextBlob&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;TextBlob is a Python (2 and 3) library for processing textual data. It provides a simple API for diving into common natural language processing (NLP) tasks such as part-of-speech tagging, noun phrase extraction, sentiment analysis, classification, translation, and more.&lt;/p&gt;
@@ -91,7 +91,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;To get an overall sense of the blog posts submitted to the DatSci Awards, I will visualize the word count and sentiment score of each post sorted by date. TextBlob makes this task easy as it has inbuilt functions purposely built for these tasks.&lt;/p&gt;
+&lt;p&gt;To get an overall sense of the blog posts submitted to the DatSci Awards, I will visualize the word count and sentiment score of each post sorted by date. TextBlob makes this easy as it has inbuilt functions purposely built for these tasks.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;To get the word count of a blog I just need to apply the TextBlob function &lt;code class=&quot;highlighter-rouge&quot;&gt;words&lt;/code&gt; and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;len()&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;To get the sentiment score for a post, I can just use the TextBlob function &lt;code class=&quot;highlighter-rouge&quot;&gt;sentiment.polarity&lt;/code&gt;.&lt;/li&gt;
@@ -104,9 +104,9 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;plot-the-results&quot;&gt;Plot the Results&lt;/h4&gt;
+&lt;p&gt;&lt;strong&gt;Plot the Results&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;As I’d like to plot the results sorted by date, I’ll sort &lt;code class=&quot;highlighter-rouge&quot;&gt;df_blogs&lt;/code&gt; by the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; column and then set it to be the index of the DataFrame. I’ll then change the format of the date using &lt;code class=&quot;highlighter-rouge&quot;&gt;t.strftime('%d-%m-%Y')&lt;/code&gt; (day-month-year) to eliminate seconds, minutes, and hours from appearing in my final plots.&lt;/p&gt;
+&lt;p&gt;To plot the results sorted by date, I’ll sort &lt;code class=&quot;highlighter-rouge&quot;&gt;df_blogs&lt;/code&gt; by the &lt;code class=&quot;highlighter-rouge&quot;&gt;date&lt;/code&gt; column and then set it to be the index of the DataFrame. I’ll then change the format of the date using &lt;code class=&quot;highlighter-rouge&quot;&gt;t.strftime('%d-%m-%Y')&lt;/code&gt; (day-month-year) to eliminate seconds, minutes, and hours from appearing in the final plots.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Sort df by date.&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort_values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ascending&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -117,7 +117,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;For the purposes of plotting I’ll use a Python library called &lt;a href=&quot;https://matplotlib.org/&quot; target=&quot;_blank&quot;&gt;Matplotlib&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;For the purposes of plotting, I’ll use a Python library called &lt;a href=&quot;https://matplotlib.org/&quot; target=&quot;_blank&quot;&gt;Matplotlib&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Matplotlib is a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.&lt;/p&gt;
@@ -205,9 +205,42 @@
     &lt;figcaption&gt;Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;h4 id=&quot;what-do-our-results-tell-us-so-far&quot;&gt;What do our results tell us so far?&lt;/h4&gt;
+&lt;p&gt;Fig. A provides a means of comparing the sentiment of the posts against the entire range of values that are possible. In the case of TextBlob:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A value of 0 indicates a post is neutral in sentiment.&lt;/li&gt;
+  &lt;li&gt;Values that extend from 0 to -1 represent increasingly negative degrees of sentiment.&lt;/li&gt;
+  &lt;li&gt;While values that extend from 0 to +1 representing increasingly positive degrees of sentiment.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Fig. C and D below are produced using &lt;code class=&quot;highlighter-rouge&quot;&gt;df_blogs.describe()&lt;/code&gt; and the function &lt;code class=&quot;highlighter-rouge&quot;&gt;month_hist(df_blogs, 'month_count.pdf')&lt;/code&gt; to call following code:&lt;/p&gt;
+&lt;p&gt;In Fig. A, all blogs appear green to light green in colour, reflecting that all posts are positive in sentiment and that this positivity has carried through from 2016 into 2017. In other words, it’s a nice visual representation of the enthusiasm shared by bloggers for Data Science and the DatSci Awards.&lt;/p&gt;
+
+&lt;p&gt;To get a better idea of how sentiment varies just within the corpus itself, I then replotted the same figure but with colour values normalised between the minimum sentiment (0.102) and maximum sentiment (0.386) recorded for our dataset. In this case, two posts stand out, both appearing bright yellow in colour. We’ll come back to these later to find out what the authors were talking about.&lt;/p&gt;
+
+&lt;p&gt;Another result that stands out from the figures is that there is one post appears to be 4 times larger than the rest. To find the average word count of each post and other summary statistics, I used  &lt;code class=&quot;highlighter-rouge&quot;&gt;pandas.DataFrame.describe&lt;/code&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Generates descriptive statistics that summarize the central tendency, dispersion and shape of a dataset’s distribution, excluding NaN values.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;by executing &lt;code class=&quot;highlighter-rouge&quot;&gt;df_blogs.describe()&lt;/code&gt; to produce the table in Fig. C.&lt;/p&gt;
+
+&lt;figure class=&quot;half&quot;&gt;
+    &lt;a href=&quot;/assets/images/describe_tbl.png&quot;&gt;&lt;img src=&quot;/assets/images/describe_tbl.png&quot; /&gt;&lt;/a&gt;
+    &lt;a href=&quot;/assets/images/month_count_v.png&quot;&gt;&lt;img src=&quot;/assets/images/month_count_v.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Fig. C:  Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Count&lt;/strong&gt; gives the number of blog posts that are currently available on the DatSci Awards website. Hence, it is the same, 29, for both the &lt;code class=&quot;highlighter-rouge&quot;&gt;word_count&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;sentiment&lt;/code&gt; columns.&lt;/li&gt;
+  &lt;li&gt;The &lt;strong&gt;mean&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;word_count&lt;/code&gt; is 838 words, while the &lt;strong&gt;max&lt;/strong&gt; is 4304, which is in fact not 4, but over 5 times larger than the average post.&lt;/li&gt;
+  &lt;li&gt;While the &lt;strong&gt;min&lt;/strong&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;sentiment&lt;/code&gt; of 0.102 is indeed within the positive range of values.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fig. D depicts the number of blog posts that are published per month. We can see that the DatSci Blog was active between the months of May and September last year. This coincides with the DatSci Awards season, from the announcement of submission deadlines, right up until the awards ceremony itself held in September. In fact, the last two blog posts of 2016 occur the day after the awards ceremony held on the 22nd September 2016.&lt;/p&gt;
+
+&lt;p&gt;The next post appears at the start of May 2017, denoting the start of the new DatSci Awards season. So, even if you have no idea what the data is representing, we can see that whatever it is is seasonal. So far, 2017 has had 13 blog submissions, 7 more than for the same time period last year. Given the trend, I think it’s likely that 2017 will have a higher number of posts than 2016, but will it also beat the highest number of submissions in a month currently held by September 2016 with 10 posts? I guess we’ll have to check back in 30 days time to find out.&lt;/p&gt;
+
+&lt;p&gt;For completeness, I have included the code for producing Fig. D below. Note that &lt;code class=&quot;highlighter-rouge&quot;&gt;from datetime import datetime&lt;/code&gt; is required, while the function itself is called by &lt;code class=&quot;highlighter-rouge&quot;&gt;month_hist(df_blogs, 'month_count.pdf')&lt;/code&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;month_hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;filename&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
@@ -249,24 +282,162 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;figure class=&quot;half&quot;&gt;
-    &lt;a href=&quot;/assets/images/describe_tbl.png&quot;&gt;&lt;img src=&quot;/assets/images/describe_tbl.png&quot; /&gt;&lt;/a&gt;
-    &lt;a href=&quot;/assets/images/month_count_v.png&quot;&gt;&lt;img src=&quot;/assets/images/month_count_v.png&quot; /&gt;&lt;/a&gt;
-    &lt;figcaption&gt;Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. &lt;/figcaption&gt;
-&lt;/figure&gt;
+&lt;h3 id=&quot;what-are-datsci-bloggers-writing-about&quot;&gt;What are DatSci Bloggers Writing about?&lt;/h3&gt;
 
-&lt;p&gt;Fig. A
-Sentiment is positive.
-Most people write blogs that are less than 1000 words (get percentile / average etc.)&lt;/p&gt;
+&lt;p&gt;So far, we know:&lt;/p&gt;
 
-&lt;h3 id=&quot;what-are-datsci-bloggers-talking-about&quot;&gt;What are DatSci Bloggers Talking about?&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;When DatSci bloggers like to post,&lt;/li&gt;
+  &lt;li&gt;How long their posts tend to be, and&lt;/li&gt;
+  &lt;li&gt;We even know the sentiment of their posts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But we still have no idea as to what they’re actually writing about. As of right now, if you didn’t know the source of the data, it could be anything from summer travel diaries to movie reviews (where all the movies so far have been good). Or even if you do know the source, posts could still be potentially irrelevant to the DatSci Awards themselves. To address this, I’m going to apply a method known as &lt;a href=&quot;https://en.wikipedia.org/wiki/Tf%E2%80%93idf&quot; target=&quot;_blank&quot;&gt;Term Frequency-Inverse Document Frequency&lt;/a&gt; or TF-IDF for short:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A numerical statistic that is intended to reflect how important a word is to a document in a collection or corpus.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This will allow us to examine what words are most important for individual blog posts in comparison to the overall corpus, and hence, will give a sense of the different topics DatSci bloggers like to cover.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob to, and who has written an informative blog post on the topic which can be found &lt;a href=&quot;http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.&lt;/p&gt;
+
+&lt;p&gt;Before applying TF-IDF I’m going to further preprocessor the corpus by removing common words such as &lt;em&gt;the&lt;/em&gt;, &lt;em&gt;and&lt;/em&gt;, &lt;em&gt;I&lt;/em&gt;, &lt;em&gt;my&lt;/em&gt;, &lt;em&gt;is&lt;/em&gt; etc. These words are known as &lt;a href=&quot;https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html&quot; target=&quot;_blank&quot;&gt;Stop Words&lt;/a&gt; and are usually removed as they generally are irrelevant for searching purposes and provide little value when attempting to classify the content of a document. To do this, I will use the Python library &lt;a href=&quot;http://www.nltk.org/&quot; target=&quot;_blank&quot;&gt;Natural Language Toolkit&lt;/a&gt; (NLTK) stopword list.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;nltk.corpus&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stopwords&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Use English stop words from NLTK&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;stopwords&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stopwords&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'english'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Convert text content into tokens (each word is a seperate item in a list.)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lower&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'[^&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;s]'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Remove stop words from content and store in a new column: nsw_content. (no-stop-words_content)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'nsw_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stopwords&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Convert stop word free text content into a TextBlob oject ready for TF-IDF&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blob_nsw_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'nsw_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextBlob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The following functions taken from Steven Loria’s &lt;a href=&quot;http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/&quot; target=&quot;_blank&quot;&gt;blog post&lt;/a&gt; will be used to compute the TF-IDF for each document.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Computes &quot;term frequency&quot; which is the number of times a word
+    appears in a document blob, normalized by dividing by the
+    total number of words in blob.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;n_containing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Returns the number of documents containing &quot;word&quot;.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;idf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Computes &quot;inverse document frequency&quot; which measures how
+    common a word is among all documents in the corpus (bloblist).
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_containing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;tfidf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Computes the TF-IDF score. It is simply the product of tf and idf.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blob&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;idf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bloblist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The next code sample demonstrates how I apply the above functions to the corpus and store the top 3 most important terms in a dictionary where the keys of the dictionary are the blog titles.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;tfidf_dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Iterate over each blog post.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iterrows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Compute TF-IDF scores for all words within each blog post.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tfidf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blob_nsw_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blob_nsw_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blob_nsw_content'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Sort the terms so that more important terms are at the start.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sorted_words&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Save the top 3 terms for each blog as dictionary value where key is the title of the blog they are from.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;tfidf_dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;row&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;word&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sorted_words&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The TF-IDF dictionary is then converted into a DataFrame and merged, using the &lt;em&gt;title&lt;/em&gt; column, to the original DataFrame.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Concatenate sentence lists within blog titles.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;strip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Store tf-idf dictionary created in the previous step into it's own Pandas DataFrame.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_tfidf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tfidf_dict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;columns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'tfidf_words'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Merge using title column the TF-IDF DataFrame with the original to create a new DataFrame.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_mblogs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df_blogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_tfidf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Call the time sort function defined earlier.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_time_sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df_mblogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'date'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Finally, I adapted the previous sentiment plotting function such that the top three most important words for each post would appear over their respective bar in the sentiment chart. In particular,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I added &lt;code class=&quot;highlighter-rouge&quot;&gt;alpha = 0.6&lt;/code&gt; so that colours would be lighter,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# The actual bar plotting:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'word_count'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kind&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'barh'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'sentiment'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;linewidth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.75&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An annotation for loop for adding TF-IDF terms to each post,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Annotate tfidf terms onto each post.&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;val_anno&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.15&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;annotate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;' | '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'tfidf_words'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;iloc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val_anno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;xytext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val_anno&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;fontsize&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;weight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'bold'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I changed Seaborn’s style to remove the grey grid background so that text is more legible, and&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Change Seaborn style to a white background so that text is more legible.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sb&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;whitegrid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'axes.grid'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# Remove grey spline edges that occur as a result of changing seaborn style.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_frame_on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Then called the adapted sentiment term function as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Define name of file to save figure as.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;pdf_name_C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'norm-sent-plot-terms.pdf'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Call senti_plot_terms function.&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;senti_plot_terms&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_mblogs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;norm_B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pdf_name_C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The resulting plot is displayed in Fig. E below.&lt;/p&gt;
 
 &lt;figure&gt;
     &lt;a href=&quot;/assets/images/norm-sent-plot-terms.png&quot;&gt;&lt;img src=&quot;/assets/images/norm-sent-plot-terms.png&quot; /&gt;&lt;/a&gt;
     &lt;figcaption&gt;Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;p&gt;The final analysis I’m going to apply is known as &lt;a href=&quot;http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html&quot; target=&quot;_blank&quot;&gt;Topic Modelling&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Topic Modelling&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The final analysis I’m going to conduct is known as &lt;a href=&quot;http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html&quot; target=&quot;_blank&quot;&gt;Topic Modelling&lt;/a&gt;:&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Topic modelling can be described as a method for finding a group of words (i.e topic) from a collection of documents that best represents the information in the collection.&lt;/p&gt;
@@ -336,4 +507,4 @@ Most people write blogs that are less than 1000 words (get percentile / average 
 &lt;p&gt;Both topics then shift in 2017 and become identical in their focus. From these results, we see that in 2016 as it was the first year of the DatSci Awards,
 While in 2017, as the relevance of data science has already been established, more focus can now be placed on the awards themselves and getting to be a part of the event.&lt;/p&gt;
 
-&lt;p&gt;Just to drill down a little more, I’m going to compute the tf-idf for each post and visualise the results.&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A guest blog post for DatSci Awards 2017.</summary></entry></feed>
+&lt;p&gt;Just to drill down a little more, I’m going to compute the tf-idf for each post and visualise the results.&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.</summary></entry></feed>
