@@ -24,7 +24,7 @@
 
 
 
-<meta name="description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+<meta name="description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
 
 
 
@@ -41,13 +41,13 @@
 
 
 
-  <meta property="og:description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+  <meta property="og:description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
 
 
 
   <meta name="twitter:site" content="@siobhan_grayson">
   <meta name="twitter:title" content="DatSci Awards 2017">
-  <meta name="twitter:description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+  <meta name="twitter:description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
   <meta name="twitter:url" content="">
 
   
@@ -220,7 +220,7 @@
       
 
       
-        <p class="post__lead">A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.
+        <p class="post__lead">A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.
 </p>
       
       
@@ -380,7 +380,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="DatSci Awards 2017">
-    <meta itemprop="description" content="A guest post for DatSci Awards blog where I demonstrate some simple text analysis techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+    <meta itemprop="description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
     <meta itemprop="datePublished" content="September 01, 2017">
     
 
@@ -392,7 +392,7 @@
 
 <p>So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the <a href="https://www.datsciawards.ie/" target="_blank">DatSci Awards</a>. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me (see <a href="https://www.datsciawards.ie/news/" target="_blank">here</a> for previous posts). One way to do this is to <a href="https://en.wikipedia.org/wiki/Close_reading" target="_blank">close read</a> each post in turn. Another way is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1" target="_blank">distant reading</a> perspective, an approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.</p>
 
-<h3 id="collect-the-data">Collect the Data</h3>
+<h2 id="collect-the-data">Collect the Data</h2>
 
 <p>The first step in this approach is to collect the data for our corpus. In this case, I used a Python package called <a href="https://doc.scrapy.org/en/latest/intro/overview.html" target="_blank">Scrapy</a>:</p>
 
@@ -450,11 +450,11 @@
 
 <p>This will save the title, date, and text content of each post in a file called ‘blogs.json’.</p>
 
-<h3 id="analyse-the-data">Analyse the Data</h3>
+<h2 id="analyse-the-data">Analyse the Data</h2>
 
 <!-- Now that we have our data, lets check it and see if we need to clean it a bit before we start to analysis the text itself. -->
 
-<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm" target="_blank">Pandas DataFrame</a> and begin to analyse it. For this part, I have also uploaded a <a href="http://jupyter.org/" target="_blank">Juypter Notebook</a> containing the code which can be found here.</p>
+<p>Now that we have our data, let’s import it into a <a href="https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm" target="_blank">Pandas DataFrame</a> and begin to analyse it. For this part, I have also uploaded a <a href="http://jupyter.org/" target="_blank">Juypter Notebook</a> containing the code which can be found <a href="https://github.com/graysons/datsci-blog-code/blob/master/Guest%20Blog%20Post%20for%20DatSci%202017%20-%20An%20Analysis%20of%20Previous%20Posts.ipynb" target="_blank">here</a>.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 
@@ -494,16 +494,24 @@
 </code></pre>
 </div>
 
-<p><strong>Plot the Results</strong></p>
+<h3 id="plot-the-results">Plot the Results</h3>
 
 <p>To plot the results sorted by date, I’ll sort <code class="highlighter-rouge">df_blogs</code> by the <code class="highlighter-rouge">date</code> column and then set it to be the index of the DataFrame. I’ll then change the format of the date using <code class="highlighter-rouge">t.strftime('%d-%m-%Y')</code> (day-month-year) to eliminate seconds, minutes, and hours from appearing in the final plots.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Sort df by date.</span>
-<span class="n">df_blogs</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'date'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="c"># Set the index to equal the date.</span>
-<span class="n">df_blogs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span>
-<span class="c"># Change format of date to day-month-year.</span>
-<span class="n">df_blogs</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">d-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">Y'</span><span class="p">))</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="k">def</span> <span class="nf">df_time_sort</span><span class="p">(</span> <span class="n">df</span><span class="p">,</span> <span class="n">dcol</span> <span class="p">):</span>
+    <span class="s">"""
+    Function for sorting DataFrame by date column and then setting
+    date column as index with a d-m-Y format.
+    """</span>
+    <span class="c"># Sort df by date</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">dcol</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># Set the index to equal the date.</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">dcol</span><span class="p">]</span>
+    <span class="c"># Change format of date to day-month-year.</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s">'</span><span class="si">%</span><span class="s">d-</span><span class="si">%</span><span class="s">m-</span><span class="si">%</span><span class="s">Y'</span><span class="p">))</span>
+
+<span class="c"># Call the df_time_sort function.    </span>
+<span class="n">df_time_sort</span><span class="p">(</span><span class="n">df_blogs</span><span class="p">,</span> <span class="s">'date'</span><span class="p">)</span>
 </code></pre>
 </div>
 
@@ -571,7 +579,7 @@
 <span class="n">norm_A</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="c"># Define name of file to save figure as.</span>
 <span class="n">pdf_name_A</span> <span class="o">=</span> <span class="s">'pos-sent-plot.pdf'</span>
-<span class="c"># Call senti_plot function.</span>
+<span class="c"># Call senti_plots function.</span>
 <span class="n">senti_plots</span><span class="p">(</span> <span class="n">df_blogs</span><span class="p">,</span> <span class="n">norm_A</span><span class="p">,</span> <span class="n">pdf_name_A</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -582,7 +590,7 @@
 <span class="n">norm_B</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="nb">min</span><span class="p">(),</span> <span class="n">vmax</span><span class="o">=</span><span class="n">df_blogs</span><span class="p">[</span><span class="s">'sentiment'</span><span class="p">]</span><span class="o">.</span><span class="nb">max</span><span class="p">())</span>
 <span class="c"># Define name of file to save figure as.</span>
 <span class="n">pdf_name_B</span> <span class="o">=</span> <span class="s">'norm-sent-plot.pdf'</span>
-<span class="c"># Call senti_plot function.</span>
+<span class="c"># Call senti_plots function.</span>
 <span class="n">senti_plots</span><span class="p">(</span> <span class="n">df_blogs</span><span class="p">,</span> <span class="n">norm_B</span><span class="p">,</span> <span class="n">pdf_name_B</span><span class="p">)</span>
 </code></pre>
 </div>
@@ -617,7 +625,7 @@
 <figure class="half">
     <a href="/assets/images/describe_tbl.png"><img src="/assets/images/describe_tbl.png" /></a>
     <a href="/assets/images/month_count_v.png"><img src="/assets/images/month_count_v.png" /></a>
-    <figcaption>Fig. C:  Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+    <figcaption>Fig. C: The table that results when the Pandas ``describe()`` function is applied to our ``df_blogs`` DataFrame.  Fig. D: A bar chart depicting the number of posts that are published each month. </figcaption>
 </figure>
 
 <ul>
@@ -672,14 +680,14 @@
 </code></pre>
 </div>
 
-<h3 id="what-are-datsci-bloggers-writing-about">What are DatSci Bloggers Writing about?</h3>
+<h2 id="what-are-datsci-bloggers-writing-about">What are DatSci Bloggers Writing about?</h2>
 
 <p>So far, we know:</p>
 
 <ul>
   <li>When DatSci bloggers like to post,</li>
   <li>How long their posts tend to be, and</li>
-  <li>We even know the sentiment of their posts.</li>
+  <li>The sentiment of their posts.</li>
 </ul>
 
 <p>But we still have no idea as to what they’re actually writing about. As of right now, if you didn’t know the source of the data, it could be anything from summer travel diaries to movie reviews (where all the movies so far have been good). Or even if you do know the source, posts could still be potentially irrelevant to the DatSci Awards themselves. To address this, I’m going to apply a method known as <a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf" target="_blank">Term Frequency-Inverse Document Frequency</a> or TF-IDF for short:</p>
@@ -690,9 +698,10 @@
 
 <p>This will allow us to examine what words are most important for individual blog posts in comparison to the overall corpus, and hence, will give a sense of the different topics DatSci bloggers like to cover.</p>
 
-<p><strong>Note:</strong> A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob to, and who has written an informative blog post on the topic which can be found <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">here</a>. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.</p>
+<p><strong>Note 1:</strong> A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob to, and who has written an informative blog post on the topic which can be found <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">here</a>. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.<br />
+<strong>Note 2:</strong> For those familiar with <a href="http://scikit-learn.org/stable/index.html" target="_blank">scikit-learn</a> you might prefer <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html" target="_blank"><code class="highlighter-rouge">sklearn.feature_extraction.text.TfidfVectorizer</code></a>.</p>
 
-<p>Before applying TF-IDF I’m going to further preprocessor the corpus by removing common words such as <em>the</em>, <em>and</em>, <em>I</em>, <em>my</em>, <em>is</em> etc. These words are known as <a href="https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html" target="_blank">Stop Words</a> and are usually removed as they generally are irrelevant for searching purposes and provide little value when attempting to classify the content of a document. To do this, I will use the Python library <a href="http://www.nltk.org/" target="_blank">Natural Language Toolkit</a> (NLTK) stopword list.</p>
+<p>Before applying TF-IDF I’m going to further preprocessor the corpus by removing common words such as <em>the</em>, <em>and</em>, <em>I</em>, <em>my</em>, <em>is</em> etc. These words are known as <a href="https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html" target="_blank">Stop Words</a> and are usually removed as they generally provide little value when attempting to classify the content of a document. To do this, I will use the Python library <a href="http://www.nltk.org/" target="_blank">Natural Language Toolkit</a> (NLTK) stopword list.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 
@@ -707,7 +716,7 @@
 </code></pre>
 </div>
 
-<p>The following functions taken from Steven Loria’s <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">blog post</a> will be used to compute the TF-IDF for each document.</p>
+<p>The following functions are taken from Steven Loria’s <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">blog post</a> will be used to compute the TF-IDF for each document.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -741,7 +750,7 @@
 </code></pre>
 </div>
 
-<p>The next code sample demonstrates how I apply the above functions to the corpus and store the top 3 most important terms in a dictionary where the keys of the dictionary are the blog titles.</p>
+<p>The next code sample demonstrates how I apply the above functions to the corpus and store the top 3 most important terms in a dictionary, where the keys of the dictionary are the blog titles.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/</span>
 
@@ -755,12 +764,14 @@
               <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s">'blob_nsw_content'</span><span class="p">]</span><span class="o">.</span><span class="n">words</span><span class="p">}</span>
     <span class="c"># Sort the terms so that more important terms are at the start.</span>
     <span class="n">sorted_words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># Concatenation list of strings in blog title column.</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="p">(</span><span class="s">' '</span><span class="p">)</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">'title'</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
     <span class="c"># Save the top 3 terms for each blog as dictionary value where key is the title of the blog they are from.</span>
-    <span class="n">tfidf_dict</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">[:</span><span class="mi">3</span><span class="p">]]</span>
+    <span class="n">tfidf_dict</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sorted_words</span><span class="p">[:</span><span class="mi">3</span><span class="p">]]</span>
 </code></pre>
 </div>
 
-<p>The TF-IDF dictionary is then converted into a DataFrame and merged, using the <em>title</em> column, to the original DataFrame.</p>
+<p>The TF-IDF dictionary is then converted into a DataFrame and merged, using the <code class="highlighter-rouge">title</code> column, to the original DataFrame.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Concatenate sentence lists within blog titles.</span>
 <span class="n">df_blogs</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_blogs</span><span class="p">[</span><span class="s">'title'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s">''</span><span class="p">)</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -773,7 +784,7 @@
 </code></pre>
 </div>
 
-<p>Finally, I adapted the previous sentiment plotting function such that the top three most important words for each post would appear over their respective bar in the sentiment chart. In particular,</p>
+<p>Finally, I adapted the previous sentiment plotting function, <code class="highlighter-rouge">senti_plots</code>, such that the top three most important words for each post would appear over their respective bar. In particular,</p>
 
 <ul>
   <li>I added <code class="highlighter-rouge">alpha = 0.6</code> so that colours would be lighter,</li>
@@ -785,7 +796,7 @@
 </div>
 
 <ul>
-  <li>An annotation for loop for adding TF-IDF terms to each post,</li>
+  <li>A <code class="highlighter-rouge">for</code> loop for annotating each post with their respective TF-IDF terms,</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Annotate tfidf terms onto each post.</span>
@@ -808,7 +819,7 @@
 </div>
 
 <ul>
-  <li>Then called the adapted sentiment term function as follows:</li>
+  <li>The adapted function was then called using:</li>
 </ul>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Define name of file to save figure as.</span>
@@ -818,22 +829,31 @@
 </code></pre>
 </div>
 
-<p>The resulting plot is displayed in Fig. E below.</p>
+<p>Which resulted in the following plot, Fig. E:</p>
 
 <figure>
     <a href="/assets/images/norm-sent-plot-terms.png"><img src="/assets/images/norm-sent-plot-terms.png" /></a>
-    <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+    <figcaption>Fig. E: Color represents sentiment values scaled between [min sentiment = 0.102, max sentiment = 0.386]. Bar length = word count of blog post. Three words overlaying each bar are the top 3 TF-IDF terms for that post.</figcaption>
 </figure>
 
-<p><strong>Topic Modelling</strong></p>
+<p>Immediately, our original sentiment figure becomes even more informative:</p>
 
-<p>The final analysis I’m going to conduct is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html" target="_blank">Topic Modelling</a>:</p>
+<ul>
+  <li>The last post of 2016 is about who won: “winner - datsciawards - 22”.</li>
+  <li>The longest post has: “pb (personal best) - runner - pacing” which aligns with Barry Smyth’s guest blog titled <em>Using AI to Run your Best Marathon.</em></li>
+  <li>We can now also see what the post with the highest positive sentiment is about: “oisin - ceadar - boydell”. This is in fact a post by a previous winner, Oisin Boydell, describing what it is like to have won as a part of the CeADAR research team.</li>
+  <li>Finally, another nice finding, especially as someone that will be attending the awards this year, is that the sentiment of the posts by Paul Hayes, DatSci Awards compère, increases from 2016 (15-09-2017) to 2017 (31-08-2017). Clearly, the DatSci Awards were a lot of fun last year, as even the compère can’t hide their excitement for this years event!</li>
+</ul>
+
+<h3 id="topic-modeling">Topic Modeling</h3>
+
+<p>The very last type of text analysis I’m going to conduct is known as <a href="http://www.kdnuggets.com/2016/07/text-mining-101-topic-modeling.html" target="_blank">Topic Modeling</a>:</p>
 
 <blockquote>
-  <p>Topic modelling can be described as a method for finding a group of words (i.e topic) from a collection of documents that best represents the information in the collection.</p>
+  <p>Topic modeling can be described as a method for finding a group of words (i.e topic) from a collection of documents that best represents the information in the collection.</p>
 </blockquote>
 
-<p>Hence, it’s a great way to get an overview of what DatSci bloggers are writing about, and since there is two years of data available, we can also investigate whether these topics changed much between the years 2016 and 2017. Therefore, for this task I’m going to use a method known as <a href="https://arxiv.org/abs/1607.03055" target="_blank">Dynamic Topic Modeling via Non-negative Matrix Factorization</a>, an approach developed by <a href="http://www.derekgreene.com/" target="_blank">Dr. Derek Greene</a> from the <a href="https://www.insight-centre.org/" target="_blank">Insight Centre for Data Analytics</a>, who in the spirit of open science has made the <a href="https://github.com/derekgreene/dynamic-nmf" target="_blank">code</a> freely available online.</p>
+<p>Hence, although TF-IDF has provided insight into what individual posts are about, topic modeling builds on TF-IDF to learn what topics are common across multiple posts. In addition, since there are two years of data available, we can also investigate whether these topics changed between 2016 and 2017. Therefore, for this task I’m going to use a method known as <a href="https://arxiv.org/abs/1607.03055" target="_blank">Dynamic Topic Modeling via Non-negative Matrix Factorization</a>, an approach developed by <a href="http://www.derekgreene.com/" target="_blank">Dr. Derek Greene</a> from the <a href="https://www.insight-centre.org/" target="_blank">Insight Centre for Data Analytics</a>, who in the spirit of open science has made the <a href="https://github.com/derekgreene/dynamic-nmf" target="_blank">code</a> freely available online.</p>
 
 <p>First, I need to prepare the data so that it’s in a suitable format for the library to work. To keep things simple I’m going to break the data into two different time windows, one for each year.</p>
 
@@ -863,41 +883,57 @@
 </code></pre>
 </div>
 
-<p>Now I can start to follow the steps outlined in the <a href="(https://github.com/derekgreene/dynamic-nmf)">ReadMe</a> of the Github page. For <em>Step 1</em>, I need to navigate to the directory <code class="highlighter-rouge">dynamic-nmf-master</code> and run the following in my terminal:</p>
+<p>Now I can start to follow the steps outlined in the <a href="https://github.com/derekgreene/dynamic-nmf" target="_blank">ReadMe</a> for the library.</p>
+
+<p><strong>Step 1</strong> Navigate to the directory <code class="highlighter-rouge">dynamic-nmf-master</code> and execute the following:</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">prep</span><span class="o">-</span><span class="n">text</span><span class="o">.</span><span class="n">py</span> <span class="n">data</span><span class="o">/</span><span class="n">blogs</span><span class="o">/</span><span class="n">year2016</span> <span class="n">data</span><span class="o">/</span><span class="n">blogs</span><span class="o">/</span><span class="n">year2017</span> <span class="o">-</span><span class="n">o</span> <span class="n">data</span> <span class="o">--</span><span class="n">tfidf</span> <span class="o">--</span><span class="n">norm</span>
 </code></pre>
 </div>
 
-<p>I now have two pkl files in the data directory. <em>Step 2</em></p>
+<p><strong>Step 2</strong> I’m going to set k=2 so that the algorithm looks for 2 topics:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">find</span><span class="o">-</span><span class="n">window</span><span class="o">-</span><span class="n">topics</span><span class="o">.</span><span class="n">py</span> <span class="n">data</span><span class="o">/*.</span><span class="n">pkl</span> <span class="o">-</span><span class="n">k</span> <span class="mi">5</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">find</span><span class="o">-</span><span class="n">window</span><span class="o">-</span><span class="n">topics</span><span class="o">.</span><span class="n">py</span> <span class="n">data</span><span class="o">/*.</span><span class="n">pkl</span> <span class="o">-</span><span class="n">k</span> <span class="mi">2</span> <span class="o">-</span><span class="n">o</span> <span class="n">out</span>
 </code></pre>
 </div>
 
-<p>I now have an out file in my directory which contains two pkl files called:</p>
+<p><strong>Step 3</strong> Finally, to view the results (see Fig. F and Fig. G) run:</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">display</span><span class="o">-</span><span class="n">topics</span><span class="o">.</span><span class="n">py</span> <span class="n">out</span><span class="o">/</span><span class="n">year2016_windowtopics_k05</span><span class="o">.</span><span class="n">pkl</span> <span class="n">out</span><span class="o">/</span><span class="n">year2017_windowtopics_k05</span><span class="o">.</span><span class="n">pkl</span>
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">python</span> <span class="n">display</span><span class="o">-</span><span class="n">topics</span><span class="o">.</span><span class="n">py</span> <span class="n">out</span><span class="o">/</span><span class="n">year2016_windowtopics_k02</span><span class="o">.</span><span class="n">pkl</span> <span class="n">out</span><span class="o">/</span><span class="n">year2017_windowtopics_k02</span><span class="o">.</span><span class="n">pkl</span>
 </code></pre>
 </div>
 
 <figure class="half">
     <a href="/assets/images/2016_tbl_d2.png"><img src="/assets/images/2016_tbl_d2.png" /></a>
     <a href="/assets/images/2017_tbl_d2.png"><img src="/assets/images/2017_tbl_d2.png" /></a>
-    <figcaption>Fig. A: Color scaled between [-1 (negative sentiment), 1 (positive sentment)]. Fig. B: Color scaled between [min sentiment = 0.102, max sentiment = 0.386]. </figcaption>
+    <figcaption>Fig. F: The two 2016 topics found. Fig. G: How the two topics from 2016 look in 2017. </figcaption>
 </figure>
 
-<p>So from the results we can see how the focus has shifted from the initial year of the DatSci Awards to the second year. There are two topics begin covered which become a little more obvious when we look at the none overlapping tokens:</p>
+<p>At first glance, the two topics in 2016 look very similar. So to make it a little more obvious and see if there are two distinct topics present, lets just look at the non-overlapping terms:</p>
 
-<ul>
-  <li><em>2016 Topic 1:</em> Ireland, analytics, companies, research.</li>
-  <li><em>2016 Topic 2:</em> Awards, datsci, september, event.</li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">2016 Topic 1</th>
+      <th style="text-align: center">2016 Topic 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Ireland <br /> Analytics <br /> Companies <br /> Research</td>
+      <td style="text-align: center">Awards <br /> DatSci <br /> September <br /> Event</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>Both topics then shift in 2017 and become identical in their focus. From these results, we see that in 2016 as it was the first year of the DatSci Awards,
-While in 2017, as the relevance of data science has already been established, more focus can now be placed on the awards themselves and getting to be a part of the event.</p>
+<p>From the above table, the two topics that underlie the posts of 2016 become a bit clearer. Topic 1 appears to be concerned with analytics in Ireland in general, and how it is applied by both companies and research. Topic 2 is much more centered on the event of the DatSci Awards itself, taking place in September.</p>
 
-<p>Just to drill down a little more, I’m going to compute the tf-idf for each post and visualise the results.</p>
+<p>Both topics then shift in 2017 to become identical in their focus. How they change, in my opinion, is a reflection of how the relevance of the DatSci Awards has already been established in the previous year. There is no need to explain that data analytics is present in Ireland as they have already made that fact clear. Therefore, more concentration can now be placed on the event itself and the value that it brings to the Irish data science community, rather than having to prove that a data science community in Ireland exists.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>To conclude, although this post has turned out slightly longer then I originally intended, I hope it has been informative both from an implementation point-of-view, and from the insights that were made along the way. It’s been great to get a bird’s-eye view of the diverse range of topics being covered by DatSci bloggers, and also visualise how the DatSci awards have inspired such positivity. For the complete code implementation and data behind this post, the repository can be found <a href="https://github.com/graysons/datsci-blog-code" target="_blank">here</a>.
+If you’re interested in learning more about the different open source libraries and tools available to data scientists, and how they’re implemented, then you should pop along to one of the PyData Dublin Meetups. These are held monthly and details of the next event can be found <a href="https://www.meetup.com/PyDataDublin/" target="_blank">here</a>.</p>
 
         
       </section>
