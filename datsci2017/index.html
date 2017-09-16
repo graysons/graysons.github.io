@@ -24,7 +24,7 @@
 
 
 
-<meta name="description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+<meta name="description" content="A guest post for DatSci Awards where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
 
 
 
@@ -41,13 +41,13 @@
 
 
 
-  <meta property="og:description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+  <meta property="og:description" content="A guest post for DatSci Awards where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
 
 
 
   <meta name="twitter:site" content="@siobhan_grayson">
   <meta name="twitter:title" content="DatSci Awards 2017">
-  <meta name="twitter:description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+  <meta name="twitter:description" content="A guest post for DatSci Awards where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
   <meta name="twitter:url" content="">
 
   
@@ -220,7 +220,7 @@
       
 
       
-        <p class="post__lead">A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.
+        <p class="post__lead">A guest post for DatSci Awards where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.
 </p>
       
       
@@ -380,7 +380,7 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="DatSci Awards 2017">
-    <meta itemprop="description" content="A guest post for DatSci Awards blog where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
+    <meta itemprop="description" content="A guest post for DatSci Awards where I demonstrate some simple natural language processing techniques such as sentiment analysis, TF-IDF, and Topic Modelling.">
     <meta itemprop="datePublished" content="September 01, 2017">
     
 
@@ -390,7 +390,7 @@
       <section class="page__content" itemprop="text">
         <h6 id="guest-post-for-datsci-awards-2017">Guest Post for DatSci Awards 2017</h6>
 
-<p>So here’s my confession: This is my first blog post. I had a lot of ideas but I wasn’t sure what would be most suitable for the <a href="https://www.datsciawards.ie/" target="_blank">DatSci Awards</a>. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me (see <a href="https://www.datsciawards.ie/news/" target="_blank">here</a> for previous posts). One way to do this is to <a href="https://en.wikipedia.org/wiki/Close_reading" target="_blank">close read</a> each post in turn. Another way is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1" target="_blank">distant reading</a> perspective, an approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.</p>
+<p>As a finalist for <a href="http://irishtechnews.ie/countdown-to-the-annual-datsci-awards/" target="_blank">Data Science Student of the Year</a>, I was invited to write a guest blog post for the <a href="https://www.datsciawards.ie/" target="_blank">DatSci Awards</a>. I had a lot of ideas but wasn’t entirely sure what would be most suitable. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me (see <a href="https://www.datsciawards.ie/news/" target="_blank">here</a> for previous posts). One way to do this is to <a href="https://en.wikipedia.org/wiki/Close_reading" target="_blank">close read</a> each post in turn. Another way is to take a <a href="http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1" target="_blank">distant reading</a> perspective, an approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.</p>
 
 <h2 id="collect-the-data">Collect the Data</h2>
 
@@ -698,7 +698,7 @@
 
 <p>This will allow us to examine what words are most important for individual blog posts in comparison to the overall corpus, and hence, will give a sense of the different topics DatSci bloggers like to cover.</p>
 
-<p><strong>Note 1:</strong> A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob to, and who has written an informative blog post on the topic which can be found <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">here</a>. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.<br />
+<p><strong>Note 1:</strong> A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob, and who has written an informative blog post on the topic which can be found <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">here</a>. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.<br />
 <strong>Note 2:</strong> For those familiar with <a href="http://scikit-learn.org/stable/index.html" target="_blank">scikit-learn</a> you might prefer <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html" target="_blank"><code class="highlighter-rouge">sklearn.feature_extraction.text.TfidfVectorizer</code></a>.</p>
 
 <p>Before applying TF-IDF I’m going to further preprocessor the corpus by removing common words such as <em>the</em>, <em>and</em>, <em>I</em>, <em>my</em>, <em>is</em> etc. These words are known as <a href="https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html" target="_blank">Stop Words</a> and are usually removed as they generally provide little value when attempting to classify the content of a document. To do this, I will use the Python library <a href="http://www.nltk.org/" target="_blank">Natural Language Toolkit</a> (NLTK) stopword list.</p>
@@ -721,32 +721,20 @@
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># Adapted from http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
-<span class="k">def</span> <span class="nf">tf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">blob</span><span class="p">):</span>
-    <span class="s">"""
-    Computes "term frequency" which is the number of times a word
-    appears in a document blob, normalized by dividing by the
-    total number of words in blob.
-    """</span>
-    <span class="k">return</span> <span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">n_containing</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">):</span>
-    <span class="s">"""
-    Returns the number of documents containing "word".
-    """</span>
-    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">bloblist</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">idf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">):</span>
-    <span class="s">"""
-    Computes "inverse document frequency" which measures how
-    common a word is among all documents in the corpus (bloblist).
-    """</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bloblist</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">n_containing</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">)))</span>
-
 <span class="k">def</span> <span class="nf">tfidf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">blob</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">):</span>
     <span class="s">"""
     Computes the TF-IDF score. It is simply the product of tf and idf.
     """</span>
-    <span class="k">return</span> <span class="n">tf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">blob</span><span class="p">)</span> <span class="o">*</span> <span class="n">idf</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">bloblist</span><span class="p">)</span>
+    <span class="c"># Computes "term frequency" which is the number of times a word</span>
+    <span class="c"># appears in a document blob, normalized by dividing by the</span>
+    <span class="c"># total number of words in blob.</span>
+    <span class="n">tf</span> <span class="o">=</span> <span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+    <span class="c"># Returns the number of documents containing "word".</span>
+    <span class="n">n_containing</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">bloblist</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">blob</span><span class="o">.</span><span class="n">words</span><span class="p">)</span>
+    <span class="c"># Computes "inverse document frequency" which measures how</span>
+    <span class="c"># common a word is among all documents in the corpus (bloblist).</span>
+    <span class="n">idf</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bloblist</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">n_containing</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tf</span> <span class="o">*</span> <span class="n">idf</span>
 </code></pre>
 </div>
 
