@@ -4888,13 +4888,13 @@ body:hover .visually-hidden a, body:hover .visually-hidden input, body:hover .vi
 .modal__supporting-text { padding: 0 1em 0.5em 1em; }
 .modal__actions { padding: 0.5em 1em; border-top: 1px solid #f2f3f3; }
 
-/* Footnotes ========================================================================== */
-.footnote { color: #9ba1a6; text-decoration: none; }
+/* Footnotes [SG Edits - color and font size] ========================================================================== */
+.footnote { color: #43c7c4; text-decoration: none; }
 
 .footnotes { color: #9ba1a6; }
-.footnotes ol, .footnotes li, .footnotes p { margin-bottom: 0; font-size: 0.75em; }
+.footnotes ol, .footnotes li, .footnotes p { margin-bottom: 0; font-size: 1em; }
 
-a.reversefootnote { color: #7a8288; text-decoration: none; }
+a.reversefootnote { color: #04b4b0; text-decoration: none; }
 a.reversefootnote:hover { text-decoration: underline; }
 
 /* Required ========================================================================== */
@@ -4914,7 +4914,6 @@ a.reversefootnote:hover { text-decoration: underline; }
 #main { max-width: 100%; margin-left: auto; margin-right: auto; clear: both; margin-top: 0em; padding-left: 10%; padding-right: 10%; -webkit-animation: intro 0.3s both; animation: intro 0.3s both; -webkit-animation-delay: 0.35s; animation-delay: 0.35s; margin-top: 1em; }
 #main:after { content: " "; display: block; clear: both; }
 #main::after { clear: both; content: ""; display: table; }
-@media (min-width: 80em) { #main { max-width: 1280px; } }
 @media (min-width: 64em) { #main { margin-top: 0.5em; } }
 
 .page { margin-left: 0; }
@@ -4947,7 +4946,7 @@ a.reversefootnote:hover { text-decoration: underline; }
 .page__hero--overlay a { color: #000; }
 @media (min-width: 30em) { .page__hero--overlay { margin-bottom: 0px; } }
 .page__hero--overlay .wrapper { padding-left: 1em; padding-right: 1em; }
-@media (min-width: 80em) { .page__hero--overlay .wrapper { max-width: 1280px; padding-left: 5em; } }
+@media (min-width: 80em) { .page__hero--overlay .wrapper { padding-left: 5em; } }
 @media (min-width: 64em) { .page__hero--overlay .wrapper { padding-left: 5em; } }
 .page__hero--overlay .page__title, .page__hero--overlay .page__meta, .page__hero--overlay .comment__date, .page__hero--overlay .page__lead, .page__hero--overlay .btn, .page__hero--overlay #goog-wm-sb { color: #494e52; }
 .page__hero--overlay .page__lead, .page__hero--overlay .page__title { max-width: 600px; text-align: center; margin-left: auto; margin-right: auto; }

@@ -1,4 +1,231 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-03-14T16:57:53+00:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-09-01T00:00:00+01:00</published><updated>2017-09-01T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-03-18T21:23:36+00:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">Star Wars: A Social Network Analysis</title><link href="/pycon2017/" rel="alternate" type="text/html" title="Star Wars: A Social Network Analysis" /><published>2017-10-16T00:00:00+01:00</published><updated>2017-10-16T00:00:00+01:00</updated><id>/pycon2017</id><content type="html" xml:base="/pycon2017/">&lt;h6 id=&quot;star-wars-a-social-network-analysis&quot;&gt;Star Wars: A Social Network Analysis&lt;/h6&gt;
+
+&lt;p&gt;This post is a beginners guide on how to apply techniques from social network analysis (SNA) using &lt;a href=&quot;https://www.python.org/&quot; target=&quot;_blank&quot;&gt;Python&lt;/a&gt;, &lt;a href=&quot;https://networkx.github.io/&quot; target=&quot;_blank&quot;&gt;NetworkX&lt;/a&gt;, and &lt;a href=&quot;https://gephi.org/&quot; target=&quot;_blank&quot;&gt;Gephi&lt;/a&gt;, using Star Wars scripts. It’s derived from a talk I gave at &lt;a href=&quot;https://pyconie17.python.ie/&quot; target=&quot;_blank&quot;&gt;PyConIE 2017&lt;/a&gt; the slide of which can be found &lt;strong&gt;here&lt;/strong&gt; and there is also a recording available on the &lt;a href=&quot;https://www.youtube.com/channel/UCXlA9u2VPI9nIALNUBF0Nzw/videos&quot; target=&quot;_blank&quot;&gt;Python Ireland YouTube&lt;/a&gt; channel:&lt;/p&gt;
+
+&lt;iframe src=&quot;https://www.youtube.com/embed/HYm0Lnj6HQ0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot; id=&quot;fitvid0&quot;&gt;&lt;/iframe&gt;
+
+&lt;h2 id=&quot;collect-the-scripts&quot;&gt;Collect the Scripts&lt;/h2&gt;
+
+&lt;p&gt;One of the best online resources for finding movie scripts is &lt;a href=&quot;http://www.imsdb.com/&quot; target=&quot;_blank&quot;&gt;The Internet Movie Script Database (IMSDB)&lt;/a&gt;. A quick search for ‘Star Wars’ returns the seven main scripts&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;There are many different ways to collect the scripts, in my case I decided to use the Python package &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/overview.html&quot; target=&quot;_blank&quot;&gt;Scrapy&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For the simple purpose of collecting seven scripts, I’m definitely not utilising the full capabilities of Scrapy. However, it has great documentation and as a result, is very quick to implement and extend. The code below is just an adaption of the sample spider project they walk through on their &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/tutorial.html&quot; target=&quot;_blank&quot;&gt;tutorial page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To collect only the script text from each page, I first needed to inspect the tags used within the site’s HTML. Something that can be easily done if you’re using the web browser &lt;a href=&quot;https://www.google.com/chrome/&quot; target=&quot;_blank&quot;&gt;Chrome&lt;/a&gt;, which just requires you to right-click on the page you’re interested in and selecting &lt;em&gt;Inspect&lt;/em&gt; from the resulting menu.&lt;/p&gt;
+
+&lt;figure&gt;
+    &lt;a href=&quot;/assets/images/pyconie17/chrome-inspect.png&quot;&gt;
+    &lt;img src=&quot;/assets/images/pyconie17/chrome-inspect.png&quot; /&gt;&lt;/a&gt;
+    &lt;figcaption&gt;Chrome Inspect applied to The Force Awakens script on IMSDB.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;As we can see from the figure above, script text is contained within the HTML tag &lt;code class=&quot;highlighter-rouge&quot;&gt;td class=&quot;scrtext&quot;&lt;/code&gt; which in turn is nested within the &lt;code class=&quot;highlighter-rouge&quot;&gt;table&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt; tags&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;. Using this information, I can then define the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'body table td.scrtext'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This means return the text contained between &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&amp;lt;table&amp;gt;&amp;lt;td class=&quot;scrtext&quot;&amp;gt;&lt;/code&gt; tags of the page. For further information on how I arrived at this, check out &lt;a href=&quot;https://doc.scrapy.org/en/latest/topics/selectors.html&quot; target=&quot;_blank&quot;&gt;CSS Selectors&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The code in it’s entirety is as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;scrapy&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Import scrapy library.&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ScriptSpider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scrapy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Spider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;scripts&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# Name of spider.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;allowed_domains&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;imsdb.com&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_urls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-A-New-Hope.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-Attack-of-the-Clones.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-Return-of-the-Jedi.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-Revenge-of-the-Sith.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-The-Empire-Strikes-Back.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-The-Force-Awakens.html'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;'http://www.imsdb.com/scripts/Star-Wars-The-Phantom-Menace.html'&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;parse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        Function for parsing response and returning desired text from url page.
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'body table td.scrtext'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;'url'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;      &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;'title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;    &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+                &lt;span class=&quot;c&quot;&gt;# '*' will visit all inner tags of p and li (&amp;lt;span&amp;gt;&amp;lt;bold&amp;gt; &amp;lt;ul&amp;gt;&amp;lt;ol&amp;gt; etc) and get text.&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;   &lt;span class=&quot;n&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'*::text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;extract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Once you have followed the guidelines for setting up a new project and have saved the code above as your spider, from your terminal, navigate to the same directory as your spider project and run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrapy crawl scripts -o scripts.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Where ‘scripts’ is the name of the spider definied in the code above. This will save the text content of each script in a file called ‘scripts.json’.&lt;/p&gt;
+
+&lt;h2 id=&quot;preprocess-the-data&quot;&gt;Preprocess the Data&lt;/h2&gt;
+
+&lt;p&gt;Now that we have our scripts in a JSON file we can start to prepare them to be modelled as networks. For this part of the post there is also an accompanying &lt;strong&gt;Jupyter Notebook&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;visualising-the-networks&quot;&gt;Visualising the Networks&lt;/h2&gt;
+
+&lt;p&gt;Gephi and D3 V4.&lt;/p&gt;
+
+&lt;style&gt;
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+
+}
+
+svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  /* border:1px solid black; */
+}
+&lt;/style&gt;
+
+&lt;svg&gt;&lt;/svg&gt;
+
+&lt;script src=&quot;https://d3js.org/d3.v4.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+
+var width = window.innerWidth
+var height = window.innerHeight
+if(width &lt; 600 ){
+    var width = window.innerWidth;
+    var height = window.innerHeight;
+}
+else {
+    var width = (window.innerWidth)/2;
+    var height = (window.innerHeight)/2;
+}
+
+var svg = d3.select(&quot;svg&quot;)
+    .attr(&quot;viewBox&quot;, &quot;0 0 &quot; + width + &quot; &quot; + height )
+    .attr(&quot;preserveAspectRatio&quot;, &quot;xMidYMid meet&quot;);
+
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+var simulation = d3.forceSimulation()
+    .force(&quot;link&quot;, d3.forceLink().id(function(d) { return d.id; }))
+    .force(&quot;charge&quot;, d3.forceManyBody())
+    .force(&quot;center&quot;, d3.forceCenter(width/2, height/2));
+
+d3.json(&quot;/assets/post_data/miserables.json&quot;, function(error, graph) {
+    if (error) throw error;
+
+var link = svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;links&quot;)
+    .selectAll(&quot;line&quot;)
+    .data(graph.links)
+    .enter().append(&quot;line&quot;)
+        .attr(&quot;stroke-width&quot;, function(d) { return Math.sqrt(d.value); });
+
+var radius = 5
+
+var node = svg.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;nodes&quot;)
+    .selectAll(&quot;circle&quot;)
+    .data(graph.nodes)
+    .enter().append(&quot;circle&quot;)
+        .attr(&quot;r&quot;, radius)
+        .attr(&quot;fill&quot;, function(d) { return color(d.group); })
+        .call(d3.drag()
+            .on(&quot;start&quot;, dragstarted)
+            .on(&quot;drag&quot;, dragged)
+            .on(&quot;end&quot;, dragended));
+
+  node.append(&quot;title&quot;)
+      .text(function(d) { return d.id; });
+
+  simulation
+      .nodes(graph.nodes)
+      .on(&quot;tick&quot;, tick);
+
+  simulation.force(&quot;link&quot;)
+      .links(graph.links);
+
+  function tick() {
+    node
+        .attr(&quot;cx&quot;, function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
+        .attr(&quot;cy&quot;, function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
+
+    link
+        .attr(&quot;x1&quot;, function(d) { return d.source.x; })
+        .attr(&quot;y1&quot;, function(d) { return d.source.y; })
+        .attr(&quot;x2&quot;, function(d) { return d.target.x; })
+        .attr(&quot;y2&quot;, function(d) { return d.target.y; });
+  }
+});
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+
+&lt;/script&gt;
+
+&lt;p&gt;Now that we have our scripts, let’s import it into a &lt;a href=&quot;https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm&quot; target=&quot;_blank&quot;&gt;Pandas DataFrame&lt;/a&gt; and begin to analyse it. For this part, I have also uploaded a &lt;a href=&quot;http://jupyter.org/&quot; target=&quot;_blank&quot;&gt;Juypter Notebook&lt;/a&gt; containing the code which can be found &lt;a href=&quot;https://github.com/graysons/datsci-blog-code/blob/master/Guest%20Blog%20Post%20for%20DatSci%202017%20-%20An%20Analysis%20of%20Previous%20Posts.ipynb&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;At first glance, the two topics in 2016 look very similar. So to make it a little more obvious and see if there are two distinct topics present, lets just look at the non-overlapping terms:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2016 Topic 1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2016 Topic 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Ireland &lt;br /&gt; Analytics &lt;br /&gt; Companies &lt;br /&gt; Research&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Awards &lt;br /&gt; DatSci &lt;br /&gt; September &lt;br /&gt; Event&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;From the above table, the two topics that underlie the posts of 2016 become a bit clearer. Topic 1 appears to be concerned with analytics in Ireland in general, and how it is applied by both companies and research. Topic 2 is much more centered on the event of the DatSci Awards itself, taking place in September.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;The Last Jedi wasn’t released at the time of writing the code for this. However, last I checked (15.03.2018) the script was still not available on IMSDB.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;All film scripts except &lt;em&gt;Episode 3: Revenge of the Sith&lt;/em&gt; conformed to being between &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; tags, hence, had to bring it back to the td.scrtext class for code to work for all movies.&amp;nbsp;&lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A beginners guide to social network analysis (SNA) using Python, Networkx, and the scripts from Star Wars.</summary></entry><entry><title type="html">DatSci Awards 2017</title><link href="/datsci2017/" rel="alternate" type="text/html" title="DatSci Awards 2017" /><published>2017-09-01T00:00:00+01:00</published><updated>2017-09-01T00:00:00+01:00</updated><id>/datsci2017</id><content type="html" xml:base="/datsci2017/">&lt;h6 id=&quot;guest-post-for-datsci-awards-2017&quot;&gt;Guest Post for DatSci Awards 2017&lt;/h6&gt;
 
 &lt;p&gt;As a finalist for &lt;a href=&quot;http://irishtechnews.ie/countdown-to-the-annual-datsci-awards/&quot; target=&quot;_blank&quot;&gt;Data Science Student of the Year&lt;/a&gt;, I was invited to write a guest blog post for the &lt;a href=&quot;https://www.datsciawards.ie/&quot; target=&quot;_blank&quot;&gt;DatSci Awards&lt;/a&gt;. I had a lot of ideas but wasn’t entirely sure what would be most suitable. To get inspiration, I decided it would be a good idea to review what other DatSci bloggers had submitted before me (see &lt;a href=&quot;https://www.datsciawards.ie/news/&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt; for previous posts). One way to do this is to &lt;a href=&quot;https://en.wikipedia.org/wiki/Close_reading&quot; target=&quot;_blank&quot;&gt;close read&lt;/a&gt; each post in turn. Another way is to take a &lt;a href=&quot;http://www.nytimes.com/2011/06/26/books/review/the-mechanic-muse-what-is-distant-reading.html?mcubz=1&quot; target=&quot;_blank&quot;&gt;distant reading&lt;/a&gt; perspective, an approach which facilitates higher level comparisons to be made across all posts. In this case, I went with the latter as it allows me to demonstrate some simple text analysis techniques that can be used to gain insights about the type of blog posts being submitted.&lt;/p&gt;
 
