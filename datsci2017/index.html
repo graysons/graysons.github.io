@@ -701,7 +701,7 @@
 <p><strong>Note 1:</strong> A portion of the code I will use next is an adaption of Steven Loria’s implementation which conveniently uses TextBlob, and who has written an informative blog post on the topic which can be found <a href="http://stevenloria.com/finding-important-words-in-a-document-using-tf-idf/" target="_blank">here</a>. Comments at the start of code cells will denote when content has been adapted from Loria’s implementation.<br />
 <strong>Note 2:</strong> For those familiar with <a href="http://scikit-learn.org/stable/index.html" target="_blank">scikit-learn</a> you might prefer <a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html" target="_blank"><code class="highlighter-rouge">sklearn.feature_extraction.text.TfidfVectorizer</code></a>.</p>
 
-<p>Before applying TF-IDF I’m going to further preprocessor the corpus by removing common words such as <em>the</em>, <em>and</em>, <em>I</em>, <em>my</em>, <em>is</em> etc. These words are known as <a href="https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html" target="_blank">Stop Words</a> and are usually removed as they generally provide little value when attempting to classify the content of a document. To do this, I will use the Python library <a href="http://www.nltk.org/" target="_blank">Natural Language Toolkit</a> (NLTK) stopword list.</p>
+<p>Before applying TF-IDF I’m going to further preprocess the corpus by removing common words such as <em>the</em>, <em>and</em>, <em>I</em>, <em>my</em>, <em>is</em> etc. These words are known as <a href="https://nlp.stanford.edu/IR-book/html/htmledition/dropping-common-terms-stop-words-1.html" target="_blank">Stop Words</a> and are usually removed as they generally provide little value when attempting to classify the content of a document. To do this, I will use the Python library <a href="http://www.nltk.org/" target="_blank">Natural Language Toolkit</a> (NLTK) stopword list.</p>
 
 <div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
 
@@ -920,7 +920,7 @@
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>To conclude, although this post has turned out slightly longer then I originally intended, I hope it has been informative both from an implementation point-of-view, and from the insights that were made along the way. It’s been great to get a bird’s-eye view of the diverse range of topics being covered by DatSci bloggers, and also visualise how the DatSci awards have inspired such positivity. For the complete code implementation and data behind this post, the repository can be found <a href="https://github.com/graysons/datsci-blog-code" target="_blank">here</a>.
+<p>To conclude, although this post has turned out slightly longer than I originally intended, I hope it has been informative both from an implementation point-of-view, and from the insights that were made along the way. It’s been great to get a bird’s-eye view of the diverse range of topics being covered by DatSci bloggers, and also visualise how the DatSci awards have inspired such positivity. For the complete code implementation and data behind this post, the repository can be found <a href="https://github.com/graysons/datsci-blog-code" target="_blank">here</a>.
 If you’re interested in learning more about the different open source libraries and tools available to data scientists, and how they’re implemented, then you should pop along to one of the PyData Dublin Meetups. These are held monthly and details of the next event can be found <a href="https://www.meetup.com/PyDataDublin/" target="_blank">here</a>.</p>
 
         
@@ -1001,6 +1001,48 @@ If you’re interested in learning more about the different open source librarie
     <div class="page__related">
       <h4 class="page__related-title">You May Also Enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<!-- <div class="grid__item"> -->
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    <!--[SG] Title and Read time -->
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/docker-pyspark-zeppelin/" rel="permalink">PySpark and Zeppelin with Docker
+</a>
+      
+    </h2>
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+
+
+  3 minute read
+</p>
+    
+    <!-- [SG] Image -->
+    
+      <div class="archive__item-teaser">
+        <a href="/docker-pyspark-zeppelin/" rel="permalink">
+        <img src=
+          
+            "/assets/images/docker-pyspark.png"
+          
+          alt="">
+        </a>
+      </div>
+    
+    <!-- [SG] Excerpt -->
+    <p class="archive__item-excerpt" itemprop="description">A guide to setting up and running a Docker image with Apache PySpark and Zeppelin.
+</p>
+  </article>
+</div>
+
         
           
 
