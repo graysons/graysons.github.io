@@ -1,8 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-14T14:40:58+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">Latex Notes</title><link href="/latex-notes/" rel="alternate" type="text/html" title="Latex Notes" /><published>2018-10-12T00:00:00+01:00</published><updated>2018-10-12T00:00:00+01:00</updated><id>/latex-notes</id><content type="html" xml:base="/latex-notes/">&lt;h6 id=&quot;latex-notes&quot;&gt;Latex Notes&lt;/h6&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-17T21:33:48+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">Latex Notes</title><link href="/latex-notes/" rel="alternate" type="text/html" title="Latex Notes" /><published>2018-10-12T00:00:00+01:00</published><updated>2018-10-12T00:00:00+01:00</updated><id>/latex-notes</id><content type="html" xml:base="/latex-notes/">&lt;h6 id=&quot;latex-notes&quot;&gt;LaTeX Notes&lt;/h6&gt;
 
-&lt;p&gt;Latex tips that I’ve needed at some point when writing papers and documents.&lt;/p&gt;
+&lt;p&gt;LaTeX tips that I’ve needed at some point when writing papers and documents.&lt;/p&gt;
 
-&lt;h2 id=&quot;convert-pdf-images-to-eps&quot;&gt;Convert PDF Images to EPS&lt;/h2&gt;
+&lt;h3 id=&quot;citing-webpages&quot;&gt;Citing Webpages&lt;/h3&gt;
+
+&lt;p&gt;I like to use Wikipedia’s &lt;a href=&quot;https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&amp;amp;page=LaTeX&amp;amp;id=413720397&quot; target=&quot;_blank&quot;&gt;Cite This Page&lt;/a&gt; example:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use the LaTeX package &lt;code class=&quot;highlighter-rouge&quot;&gt;url&lt;/code&gt; by placing &lt;code class=&quot;highlighter-rouge&quot;&gt;\usepackage{url}&lt;/code&gt; somewhere in the preamble (before &lt;code class=&quot;highlighter-rouge&quot;&gt;\begin{document}&lt;/code&gt;).&lt;/li&gt;
+  &lt;li&gt;The template of the BibTeX entry is as follows:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;@misc{ wiki:xxx,
+    author = &quot;{Wikipedia contributors}&quot;,
+    title = &quot;LaTeX --- {Wikipedia}{,} The Free Encyclopedia&quot;,
+    year = &quot;2011&quot;,
+    howpublished = &quot;\url{https://en.wikipedia.org/w/index.php?title=LaTeX&amp;amp;oldid=413720397}&quot;,
+    note = &quot;[Online; accessed 17-October-2018]&quot;
+  }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;convert-pdf-images-to-eps&quot;&gt;Convert PDF Images to EPS&lt;/h3&gt;
 
 &lt;p&gt;Although it’s becoming less common some conferences/journals will require images to be submitted in an EPS format rather than PDF/PNG etc. I usually generate PDF images, hence, I’m going to quickly run through how I convert PDF to EPS.&lt;/p&gt;
 

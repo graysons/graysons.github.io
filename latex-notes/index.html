@@ -388,11 +388,30 @@
       
 
       <section class="page__content" itemprop="text">
-        <h6 id="latex-notes">Latex Notes</h6>
+        <h6 id="latex-notes">LaTeX Notes</h6>
 
-<p>Latex tips that I’ve needed at some point when writing papers and documents.</p>
+<p>LaTeX tips that I’ve needed at some point when writing papers and documents.</p>
 
-<h2 id="convert-pdf-images-to-eps">Convert PDF Images to EPS</h2>
+<h3 id="citing-webpages">Citing Webpages</h3>
+
+<p>I like to use Wikipedia’s <a href="https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&amp;page=LaTeX&amp;id=413720397" target="_blank">Cite This Page</a> example:</p>
+
+<ul>
+  <li>Use the LaTeX package <code class="highlighter-rouge">url</code> by placing <code class="highlighter-rouge">\usepackage{url}</code> somewhere in the preamble (before <code class="highlighter-rouge">\begin{document}</code>).</li>
+  <li>The template of the BibTeX entry is as follows:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>@misc{ wiki:xxx,
+    author = "{Wikipedia contributors}",
+    title = "LaTeX --- {Wikipedia}{,} The Free Encyclopedia",
+    year = "2011",
+    howpublished = "\url{https://en.wikipedia.org/w/index.php?title=LaTeX&amp;oldid=413720397}",
+    note = "[Online; accessed 17-October-2018]"
+  }
+</code></pre>
+</div>
+
+<h3 id="convert-pdf-images-to-eps">Convert PDF Images to EPS</h3>
 
 <p>Although it’s becoming less common some conferences/journals will require images to be submitted in an EPS format rather than PDF/PNG etc. I usually generate PDF images, hence, I’m going to quickly run through how I convert PDF to EPS.</p>
 
