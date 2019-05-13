@@ -1,6 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2018-10-22T18:22:42+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">Latex Notes</title><link href="/latex-notes/" rel="alternate" type="text/html" title="Latex Notes" /><published>2018-10-12T00:00:00+01:00</published><updated>2018-10-12T00:00:00+01:00</updated><id>/latex-notes</id><content type="html" xml:base="/latex-notes/">&lt;h6 id=&quot;latex-notes&quot;&gt;LaTeX Notes&lt;/h6&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2019-05-13T17:17:32+01:00</updated><id>/</id><title type="html">Siobhán Grayson</title><subtitle>Blog</subtitle><author><name>Siobhán Grayson</name></author><entry><title type="html">Latex Notes</title><link href="/latex-notes/" rel="alternate" type="text/html" title="Latex Notes" /><published>2019-05-13T00:00:00+01:00</published><updated>2019-05-13T00:00:00+01:00</updated><id>/latex-notes</id><content type="html" xml:base="/latex-notes/">&lt;h6 id=&quot;latex-notes&quot;&gt;LaTeX Notes&lt;/h6&gt;
 
 &lt;p&gt;LaTeX tips that I’ve needed at some point when writing papers and documents.&lt;/p&gt;
+
+&lt;h3 id=&quot;moar-floats&quot;&gt;Moar Floats!&lt;/h3&gt;
+
+&lt;p&gt;When you reach a “Too many unprocessed floats with marginpar” error due to usingn Tufte-book etc you’re going to need &lt;code class=&quot;highlighter-rouge&quot;&gt;morefloats&lt;/code&gt; 🙃 Just add this package to your preamble:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\usepackage{morefloats}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\usepackage[maxfloats=25]{morefloats}&lt;/code&gt; (if you want to set a float limit)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;table-cell-flush-right&quot;&gt;Table Cell Flush Right&lt;/h3&gt;
+
+&lt;p&gt;Have you ever needed to flush text right in a table cell? No, well you can just 
+use &lt;code class=&quot;highlighter-rouge&quot;&gt;\hfill&lt;/code&gt; in case you’re ever wondering…&lt;/p&gt;
 
 &lt;h3 id=&quot;natbib-citation&quot;&gt;Natbib Citation&lt;/h3&gt;
 
@@ -50,254 +64,14 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;A new EPS image file should appear in the same directory with the same filename as the PDF that was used to generate it.&lt;/p&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">Latex notes for paper writing.</summary></entry><entry><title type="html">PySpark and Zeppelin with Docker</title><link href="/docker-pyspark-zeppelin/" rel="alternate" type="text/html" title="PySpark and Zeppelin with Docker" /><published>2018-03-27T00:00:00+01:00</published><updated>2018-03-27T00:00:00+01:00</updated><id>/docker-pyspark-zeppelin</id><content type="html" xml:base="/docker-pyspark-zeppelin/">&lt;h6 id=&quot;pyspark-and-zeppelin-with-docker&quot;&gt;PySpark and Zeppelin with Docker&lt;/h6&gt;
+&lt;p&gt;A new EPS image file should appear in the same directory with the same filename as the PDF that was used to generate it.&lt;/p&gt;
 
-&lt;p&gt;WORK-IN-PROGRESS!&lt;/p&gt;
+&lt;h3 id=&quot;todo-notes&quot;&gt;TODO notes&lt;/h3&gt;
 
-&lt;p&gt;First step is to install &lt;a href=&quot;https://docs.docker.com&quot; target=&quot;_blank&quot;&gt;Docker&lt;/a&gt; on your machine if it’s not already. The reason for this is that Docker will be used&lt;/p&gt;
-
-&lt;p&gt;Docker is an open-source project for automating the deployment of applications as portable, self-sufficient containers that can run on the cloud or on-premises.&lt;/p&gt;
-
-&lt;p&gt;First, if don’t have Docker&lt;/p&gt;
-
-&lt;blockquote&gt;
-
-&lt;/blockquote&gt;
-
-&lt;p&gt;This post is a beginners guide on how to apply techniques from social network analysis (SNA) using &lt;a href=&quot;https://www.python.org/&quot; target=&quot;_blank&quot;&gt;Python&lt;/a&gt;, &lt;a href=&quot;https://networkx.github.io/&quot; target=&quot;_blank&quot;&gt;NetworkX&lt;/a&gt;, and &lt;a href=&quot;https://gephi.org/&quot; target=&quot;_blank&quot;&gt;Gephi&lt;/a&gt;, using Star Wars scripts.&lt;/p&gt;
-
-&lt;h2 id=&quot;collect-the-scripts&quot;&gt;Collect the Scripts&lt;/h2&gt;
-
-&lt;p&gt;One of the best online resources for finding movie scripts is &lt;a href=&quot;http://www.imsdb.com/&quot; target=&quot;_blank&quot;&gt;The Internet Movie Script Database (IMSDB)&lt;/a&gt;. A quick search for ‘Star Wars’ returns the seven main scripts&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
-
-&lt;p&gt;There are many different ways to collect the scripts, in my case I decided to use the Python package &lt;a href=&quot;https://doc.scrapy.org/en/latest/intro/overview.html&quot; target=&quot;_blank&quot;&gt;Scrapy&lt;/a&gt;:&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Scrapy is an application framework for crawling web sites and extracting structured data which can be used for a wide range of useful applications, like data mining, information processing or historical archival.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;figure&gt;
-    &lt;a href=&quot;/assets/images/pyconie17/chrome-inspect.png&quot;&gt;
-    &lt;img src=&quot;/assets/images/pyconie17/chrome-inspect.png&quot; /&gt;&lt;/a&gt;
-    &lt;figcaption&gt;Chrome Inspect applied to The Force Awakens script on IMSDB.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'body table td.scrtext'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;This means return the text contained between &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;body&amp;gt;&amp;lt;table&amp;gt;&amp;lt;td class=&quot;scrtext&quot;&amp;gt;&lt;/code&gt; tags of the page. For further information on how I arrived at this, check out &lt;a href=&quot;https://doc.scrapy.org/en/latest/topics/selectors.html&quot; target=&quot;_blank&quot;&gt;CSS Selectors&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The code in it’s entirety is as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Once you have followed the guidelines for setting up a new project and have saved the code above as your spider, from your terminal, navigate to the same directory as your spider project and run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrapy crawl scripts -o scripts.json
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;style&gt;
-
-.links line {
-  stroke: #999;
-  stroke-opacity: 0.6;
-}
-
-.nodes circle {
-  stroke: #fff;
-  stroke-width: 1.5px;
-
-}
-
-svg {
-    /* display: block;
-    width: 100%;
-    height: auto; */
-  /* border:1px solid black; */
-}
-&lt;/style&gt;
-
-&lt;svg&gt;&lt;/svg&gt;
-
-&lt;script src=&quot;https://d3js.org/d3.v4.min.js&quot;&gt;&lt;/script&gt;
-
-&lt;script&gt;
-
-var width = window.innerWidth
-var height = window.innerHeight
-if(width &lt; 600 ){
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-}
-else {
-    var width = (window.innerWidth)/2;
-    var height = (window.innerHeight)/2;
-}
-
-var svg = d3.select(&quot;svg&quot;)
-    .attr(&quot;viewBox&quot;, &quot;0 0 &quot; + width + &quot; &quot; + height )
-    .attr(&quot;preserveAspectRatio&quot;, &quot;xMidYMid meet&quot;);
-
-var color = d3.scaleOrdinal(d3.schemeCategory20);
-
-var simulation = d3.forceSimulation()
-    .force(&quot;link&quot;, d3.forceLink().id(function(d) { return d.id; }))
-    .force(&quot;charge&quot;, d3.forceManyBody())
-    .force(&quot;center&quot;, d3.forceCenter(width/2, height/2));
-
-d3.json(&quot;/assets/post_data/miserables.json&quot;, function(error, graph) {
-    if (error) throw error;
-
-var link = svg.append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;links&quot;)
-    .selectAll(&quot;line&quot;)
-    .data(graph.links)
-    .enter().append(&quot;line&quot;)
-        .attr(&quot;stroke-width&quot;, function(d) { return Math.sqrt(d.value); });
-
-var radius = 5
-
-var node = svg.append(&quot;g&quot;)
-    .attr(&quot;class&quot;, &quot;nodes&quot;)
-    .selectAll(&quot;circle&quot;)
-    .data(graph.nodes)
-    .enter().append(&quot;circle&quot;)
-        .attr(&quot;r&quot;, radius)
-        .attr(&quot;fill&quot;, function(d) { return color(d.group); })
-        .call(d3.drag()
-            .on(&quot;start&quot;, dragstarted)
-            .on(&quot;drag&quot;, dragged)
-            .on(&quot;end&quot;, dragended));
-
-  node.append(&quot;title&quot;)
-      .text(function(d) { return d.id; });
-
-  simulation
-      .nodes(graph.nodes)
-      .on(&quot;tick&quot;, tick);
-
-  simulation.force(&quot;link&quot;)
-      .links(graph.links);
-
-  function tick() {
-    node
-        .attr(&quot;cx&quot;, function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-        .attr(&quot;cy&quot;, function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)); });
-
-    link
-        .attr(&quot;x1&quot;, function(d) { return d.source.x; })
-        .attr(&quot;y1&quot;, function(d) { return d.source.y; })
-        .attr(&quot;x2&quot;, function(d) { return d.target.x; })
-        .attr(&quot;y2&quot;, function(d) { return d.target.y; });
-  }
-});
-
-function dragstarted(d) {
-  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-  d.fx = d.x;
-  d.fy = d.y;
-}
-
-function dragged(d) {
-  d.fx = d3.event.x;
-  d.fy = d3.event.y;
-}
-
-function dragended(d) {
-  if (!d3.event.active) simulation.alphaTarget(0);
-  d.fx = null;
-  d.fy = null;
-}
-
-&lt;/script&gt;
-
-&lt;p&gt;Now that we have our scripts, let’s import it into a &lt;a href=&quot;https://www.tutorialspoint.com/python_pandas/python_pandas_dataframe.htm&quot; target=&quot;_blank&quot;&gt;Pandas DataFrame&lt;/a&gt; and begin to analyse it. For this part, I have also uploaded a &lt;a href=&quot;http://jupyter.org/&quot; target=&quot;_blank&quot;&gt;Juypter Notebook&lt;/a&gt; containing the code which can be found &lt;a href=&quot;https://github.com/graysons/datsci-blog-code/blob/master/Guest%20Blog%20Post%20for%20DatSci%202017%20-%20An%20Analysis%20of%20Previous%20Posts.ipynb&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;At first glance, the two topics in 2016 look very similar. So to make it a little more obvious and see if there are two distinct topics present, lets just look at the non-overlapping terms:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;2016 Topic 1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;2016 Topic 2&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Ireland &lt;br /&gt; Analytics &lt;br /&gt; Companies &lt;br /&gt; Research&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Awards &lt;br /&gt; DatSci &lt;br /&gt; September &lt;br /&gt; Event&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;create-python-35-environment&quot;&gt;Create Python 3.5 Environment&lt;/h2&gt;
-
-&lt;p&gt;If you have installed Anaconda with Python 3 ensure it is Python 3.5.5 or lower. Otherwise, you will run into issues with PySpark which is still not compatible with Python 3.6 and above. To check which version you’re currently using execute the following in a terminal:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;python --version
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;To use Python 3.5.5 instead, we’ll create a conda environment:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;conda create --name py35 python=3.5.5
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then to use this environment we’ll run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source activate py35
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(py35)&lt;/code&gt; should now appear at the beginning of your terminal name. We can then use &lt;code class=&quot;highlighter-rouge&quot;&gt;python --version&lt;/code&gt; again to ensure that we’re now using Python 3.5.&lt;/p&gt;
-
-&lt;h2 id=&quot;java-with-homebrew-on-macos&quot;&gt;Java with Homebrew on MacOS&lt;/h2&gt;
-
-&lt;p&gt;Today, the latest version of Java JDK is 10. For PySpark and Zeppelin to work we need Java 8. If it’s not already available on your machine, you’ll need to install it, the easiest way is via Homebrew. To search if it’s available, type the following:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew cask search &quot;java*&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;If java8 does not appear, we’ll need to tap the versions as follows:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew tap caskroom/versions
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Then repeat ```brew cask search “java*”. This time java8 does appear. To install, run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew cask install java8
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Once it’s successfully installed we should see two java versions now available when we run:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/usr/libexec/java_home -V
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;The default is still set to Java 10. To switch to Java 8 export the path:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Now when we check with java version (which is slightly different to Java 9/10 &lt;code class=&quot;highlighter-rouge&quot;&gt;java --version&lt;/code&gt;) we should see it’s Java 8&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;java -version
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class=&quot;footnotes&quot;&gt;
-  &lt;ol&gt;
-    &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;The Last Jedi wasn’t released at the time of writing the code for this. However, last I checked (15.03.2018) the script was still not available on IMSDB.&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
-    &lt;/li&gt;
-  &lt;/ol&gt;
-&lt;/div&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">A guide to setting up and running a Docker image with Apache PySpark and Zeppelin.</summary></entry><entry><title type="html">Star Wars: A Social Network Analysis</title><link href="/pycon2017/" rel="alternate" type="text/html" title="Star Wars: A Social Network Analysis" /><published>2017-10-16T00:00:00+01:00</published><updated>2017-10-16T00:00:00+01:00</updated><id>/pycon2017</id><content type="html" xml:base="/pycon2017/">&lt;h6 id=&quot;star-wars-a-social-network-analysis&quot;&gt;Star Wars: A Social Network Analysis&lt;/h6&gt;
+&lt;p&gt;Explain:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Separate .tex compilation. Handy for say just working on just one chapter of a thesis at a time.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Siobhán Grayson</name></author><category term="blog" /><summary type="html">Latex notes for paper writing.</summary></entry><entry><title type="html">Star Wars: A Social Network Analysis</title><link href="/pycon2017/" rel="alternate" type="text/html" title="Star Wars: A Social Network Analysis" /><published>2017-10-16T00:00:00+01:00</published><updated>2017-10-16T00:00:00+01:00</updated><id>/pycon2017</id><content type="html" xml:base="/pycon2017/">&lt;h6 id=&quot;star-wars-a-social-network-analysis&quot;&gt;Star Wars: A Social Network Analysis&lt;/h6&gt;
 
 &lt;p&gt;WORK-IN-PROGRESS!&lt;/p&gt;
 
